@@ -409,6 +409,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -487,11 +490,9 @@
 <p>在桌面点击鼠标右键，点击 Git Bash Here，会出现一个界面如下图所示：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/Yafine/Yafine-imgs/images/20191117215118.png" alt="img"></p>
 <p>然后分别输入下面的两个命令，并回车：</p>
-<pre><code>git config --global user.name "此处填写你注册时的用户名"
+<pre class="line-numbers language-none"><code class="language-none">git config --global user.name "此处填写你注册时的用户名"
 git config --global user.email "此处填写你注册时的邮箱"
-# 一般只要不报错，可以跳过下面寻找.gitconfig文件
-</code></pre>
-</li>
+# 一般只要不报错，可以跳过下面寻找.gitconfig文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 <p>​        然后找到<code>.gitconfig</code> 文件，文件存放位置在 <code>C:/Users/[username]/.gitconfig</code>（未找到的话，请开启显示隐藏文件的功能），用编辑器打开，看到如下图所示的内容，即配置成功！</p>
 <p>​        <img src="https://cdn.jsdelivr.net/gh/Yafine/Yafine-imgs/images/20191117220016.png" alt="img"></p>
@@ -569,12 +570,12 @@ git config --global user.email "此处填写你注册时的邮箱"
 <p>说明：必须安装，否则执行hexo d 的话会报错</p>
 </li>
 <li><p>第二步：编辑D:\JAVA项目\HexoData目录下的 _config.yml 文件, 在文件末尾修改配置文件：</p>
-<pre><code>deploy:
+<pre class="line-numbers language-none"><code class="language-none">deploy:
   type: git
   repo: github上对应仓库的ssh 链接  
     //也可使用https地址，如：https://github.com/Github用户名/Github用户名.github.io.git            
-  branch: main
-</code></pre>
+  branch: main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>说明：</strong>仓库的ssh链接如下</p>
 <p><img src="https://i0.hdslb.com/bfs/article/9cc1855324f9f968aa56d8a94a913475b3bc1d70.png@942w_437h_progressive.webp" alt="img"></p>
 <p><strong>切记：分支branch切记修改为 main，之前github的默认主分支为master，现已经改为main</strong> ！！！</p>
@@ -631,121 +632,119 @@ git config --global user.email "此处填写你注册时的邮箱"
 </ul>
 <h3 id="4-2-2-创建标签页面-（首页的标签选项）"><a href="#4-2-2-创建标签页面-（首页的标签选项）" class="headerlink" title="4.2.2 创建标签页面 （首页的标签选项）"></a>4.2.2 创建标签页面 （首页的标签选项）</h3><ul>
 <li><p><code>tags</code> 页是用来展示所有标签的页面，如果在你的博客 <code>source</code> 目录下还没有 <code>tags/index.md</code> 文件，那么你就需要新建一个，命令如下（source目录下 右键 git bash here）：</p>
-<pre><code>hexo new page "tags"
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">hexo new page "tags"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>编辑你刚刚新建的页面文件 <code>/source/tags/index.md</code>，至少需要以下内容：</p>
 </li>
 </ul>
-<pre><code>---
+<pre class="line-numbers language-none"><code class="language-none">---
 title: tags
 date: 2018-09-30 18:23:38
 type: "tags"
 layout: "tags"
----
-</code></pre>
+---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li><p><code>categories</code> 页是用来展示所有分类的页面，如果在你的博客 <code>source</code> 目录下还没有 <code>categories/index.md</code> 文件，那么你就需要新建一个，命令如下：</p>
-<pre><code>hexo new page "categories"
-</code></pre>
-</li>
+<pre class="line-numbers language-none"><code class="language-none">hexo new page "categories"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <p>编辑你刚刚新建的页面文件 <code>/source/categories/index.md</code>，至少需要以下内容：</p>
-<pre><code>---
+<pre class="line-numbers language-none"><code class="language-none">---
 title: categories
 date: 2018-09-30 17:25:30
 type: "categories"
 layout: "categories"
----
-</code></pre>
+---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li><code>about</code> 页是用来展示<strong>关于我和我的博客</strong>信息的页面，如果在你的博客 <code>source</code> 目录下还没有 <code>about/index.md</code> 文件，那么你就需要新建一个，命令如下：</li>
 </ul>
-<pre><code>hexo new page "about"
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">hexo new page "about"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>编辑你刚刚新建的页面文件 <code>/source/about/index.md</code>，至少需要以下内容：</p>
-<pre><code>---
+<pre class="line-numbers language-none"><code class="language-none">---
 title: about
 date: 2018-09-30 17:25:30
 type: "about"
 layout: "about"
----
-</code></pre>
+---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li><code>contact</code> 页是用来展示<strong>留言板</strong>信息的页面，如果在你的博客 <code>source</code> 目录下还没有 <code>contact/index.md</code> 文件，那么你就需要新建一个，命令如下：</li>
 </ul>
-<pre><code>hexo new page "contact"
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">hexo new page "contact"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>编辑你刚刚新建的页面文件 <code>/source/contact/index.md</code>，至少需要以下内容：</p>
-<pre><code>---
+<pre class="line-numbers language-none"><code class="language-none">---
 title: contact
 date: 2018-09-30 17:25:30
 type: "contact"
 layout: "contact"
----
-</code></pre>
+---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>注</strong>：本留言板功能依赖于第三方评论系统，请<strong>激活</strong>你的评论系统才有效果。并且在主题的 <code>_config.yml</code> 文件中，第 <code>19</code> 至 <code>21</code> 行的 “<strong>菜单</strong>” 配置，取消关于留言板的注释即可。</p>
 <h3 id="4-2-3-添加emoji表情支持"><a href="#4-2-3-添加emoji表情支持" class="headerlink" title="4.2.3 添加emoji表情支持"></a>4.2.3 添加emoji表情支持</h3><p>安装命令如下：</p>
-<pre><code>npm install hexo-filter-github-emojis --save
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">npm install hexo-filter-github-emojis --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>在 Hexo 根目录下的 <code>_config.yml</code> 文件中，新增以下的配置项：</p>
-<pre><code>ithubEmojis:
+<pre class="line-numbers language-none"><code class="language-none">ithubEmojis:
   enable: true
   className: github-emoji
   inject: true
   styles:
-  customEmojis:
-</code></pre>
+  customEmojis:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>执行 <code>hexo clean &amp;&amp; hexo g</code> 重新生成博客文件，然后就可以在文章中对应位置看到你用 <code>emoji</code> 语法写的表情了。</p>
 <h3 id="4-2-4-代码高亮"><a href="#4-2-4-代码高亮" class="headerlink" title="4.2.4 代码高亮"></a>4.2.4 代码高亮</h3><p>由于 Hexo 自带的代码高亮主题显示不好看，所以主题中使用到了 <a target="_blank" rel="noopener" href="https://github.com/ele828/hexo-prism-plugin">hexo-prism-plugin</a> 的 Hexo 插件来做代码高亮，安装命令如下：</p>
-<pre><code>npm i -S hexo-prism-plugin
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">npm i -S hexo-prism-plugin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>然后，修改 Hexo 根目录下 <code>_config.yml</code> 文件中 <code>highlight.enable</code> 的值为 <code>false</code>，并新增 <code>prism</code> 插件相关的配置，主要配置如下：</p>
-<pre><code>prism_plugin:
+<pre class="line-numbers language-none"><code class="language-none">prism_plugin:
   mode: 'preprocess'    # realtime/preprocess
   theme: 'tomorrow'
   line_number: false    # default false
-  custom_css:
-</code></pre>
+  custom_css:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="4-2-5-开启主页搜索功能"><a href="#4-2-5-开启主页搜索功能" class="headerlink" title="4.2.5 开启主页搜索功能"></a>4.2.5 开启主页搜索功能</h3><p>本主题中还使用到了 <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search">hexo-generator-search</a> 的 Hexo 插件来做内容搜索，安装命令如下：</p>
-<pre><code>npm install hexo-generator-search --save
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">npm install hexo-generator-search --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>在 Hexo 根目录下的 <code>_config.yml</code> 文件中，新增以下的配置项：</p>
-<pre><code>search:
+<pre class="line-numbers language-none"><code class="language-none">search:
   path: search.xml
-  field: post
-</code></pre>
+  field: post<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="4-2-6-开启中文链接转拼音功能"><a href="#4-2-6-开启中文链接转拼音功能" class="headerlink" title="4.2.6 开启中文链接转拼音功能"></a>4.2.6 开启中文链接转拼音功能</h3><p>如果你的文章名称是中文的，那么 Hexo 默认生成的永久链接也会有中文，这样不利于 <code>SEO</code>，且 <code>gitment</code> 评论对中文链接也不支持。我们可以用 <a target="_blank" rel="noopener" href="https://github.com/viko16/hexo-permalink-pinyin">hexo-permalink-pinyin</a> Hexo 插件使在生成文章时生成中文拼音的永久链接。</p>
 <p>安装命令如下：</p>
-<pre><code>npm i hexo-permalink-pinyin --save
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">npm i hexo-permalink-pinyin --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>在 Hexo 根目录下的 <code>_config.yml</code> 文件中，新增以下的配置项：</p>
-<pre><code>permalink_pinyin:
+<pre class="line-numbers language-none"><code class="language-none">permalink_pinyin:
   enable: true
-  separator: '-' # default: '-'
-</code></pre>
+  separator: '-' # default: '-'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>注</strong>：除了此插件外，<a target="_blank" rel="noopener" href="https://github.com/rozbo/hexo-abbrlink">hexo-abbrlink</a> 插件也可以生成非中文的链接。</p>
 <h3 id="4-2-7-开启文章字数统计插件"><a href="#4-2-7-开启文章字数统计插件" class="headerlink" title="4.2.7 开启文章字数统计插件"></a>4.2.7 开启文章字数统计插件</h3><p>如果你想要在文章中显示文章字数、阅读时长信息，可以安装 <a target="_blank" rel="noopener" href="https://github.com/willin/hexo-wordcount">hexo-wordcount</a> 插件。</p>
 <p>安装命令如下：</p>
-<pre><code>npm i --save hexo-wordcount
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">npm i --save hexo-wordcount<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>然后只需在本主题下的 <code>_config.yml</code> 文件中，激活以下配置项即可：</p>
-<pre><code>wordCount:
+<pre class="line-numbers language-none"><code class="language-none">wordCount:
   enable: false # 将这个值设置为 true 即可.
   postWordCount: true
   min2read: true
-  totalCount: true
-</code></pre>
+  totalCount: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="4-2-8-修改页脚"><a href="#4-2-8-修改页脚" class="headerlink" title="4.2.8 修改页脚"></a>4.2.8 修改页脚</h3><p>页脚信息可能需要做定制化修改，而且它不便于做成配置信息，所以可能需要你自己去再修改和加工。修改的地方在主题文件的 <code>/layout/_partial/footer.ejs</code> 文件中，包括站点、使用的主题、访问量等。</p>
 <h3 id="4-2-9-新增和修改社交链接"><a href="#4-2-9-新增和修改社交链接" class="headerlink" title="4.2.9 新增和修改社交链接"></a>4.2.9 新增和修改社交链接</h3><p>在主题的 <code>_config.yml</code> 文件中，默认支持 <code>QQ</code>、<code>GitHub</code> 和邮箱等的配置，你可以在主题文件的 <code>/layout/_partial/social-link.ejs</code> 文件中，新增、修改你需要的社交链接地址，增加链接可参考如下代码：</p>
 <p>新增我的CSDN链接</p>
-<pre><code>&lt;% if (theme.socialLink.csdn) { %&gt;
+<pre class="line-numbers language-none"><code class="language-none">&lt;% if (theme.socialLink.csdn) { %&gt;
     &lt;a href="&lt;%= theme.socialLink.csdn %&gt;" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN: &lt;%= theme.socialLink.csdn %&gt;" data-position="top" data-delay="50"&gt;
         &lt;i class="fab fa-csdn"&gt;CSDN&lt;/i&gt;
     &lt;/a&gt;
-&lt;% } %&gt;
-</code></pre>
+&lt;% } %&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>接着你需要在主题配置文件下新增CSDN链接</p>
-<pre><code>socialLink:
+<pre class="line-numbers language-none"><code class="language-none">socialLink:
   qq: 624597867
   weixin: https://cdn.jsdelivr.net/gh/Yafine/Yafine-imgs/images/wechat.png
   github: 
@@ -754,8 +753,8 @@ layout: "contact"
   twitter: # https://twitter.com/xxx
   weibo: # https://weibo.com/xxx
   csdn: https://blog.csdn.net/victoryxa  # 新增CSDN链接
- 
-</code></pre>
+ <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="4-2-10-添加评论系统"><a href="#4-2-10-添加评论系统" class="headerlink" title="4.2.10 添加评论系统"></a>4.2.10 添加评论系统</h3><p>首先去<a target="_blank" rel="noopener" href="https://livere.com/">来必力官网</a>，点击导航栏上的安装，会出现如下图的页面：</p>
 <ul>
 <li><p>City 版：是一款适合所有人使用的免费版本；</p>
@@ -764,13 +763,11 @@ layout: "contact"
 <p><img src="https://cdn.jsdelivr.net/gh/Yafine/Yafine-imgs/images/20200115142313.png" alt="img"></p>
 <p>注册完之后，会提示你填写网站的相关信息，如网站链接，网站名称等等，填写完毕之后，会给你一段代码，如下图所示:</p>
 <p><img src="https://cdn.jsdelivr.net/gh/Yafine/Yafine-imgs/images/image-20200115142709585.png" alt="img"></p>
-<pre><code># Livere comment configuration, the default is not activated
+<pre class="line-numbers language-none"><code class="language-none"># Livere comment configuration, the default is not activated
 # Livere 来必力评论模块的配置，默认为不激活
 livere:
   enable: true   # true即为开启评论系统
-  uid: #这里填写你的uid
-</code></pre>
-</li>
+  uid: #这里填写你的uid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 <p>然后在<strong>主题配置文件</strong>相关的部署命令，然后查看效果即可。</p>
 <h2 id="4-3-自定义修改"><a href="#4-3-自定义修改" class="headerlink" title="4.3 自定义修改"></a>4.3 自定义修改</h2><p>在本主题的 <code>_config.yml</code> 中可以修改部分自定义信息，有以下几个部分：</p>
@@ -796,7 +793,7 @@ livere:
 </ul>
 <p><strong>我认为个人博客应该都有自己的风格和特色</strong>。如果本主题中的诸多功能和主题色彩你不满意，可以在主题中自定义修改，很多更自由的功能和细节点的修改难以在主题的 <code>_config.yml</code> 中完成，需要修改源代码才来完成。以下列出了可能对你有用的地方：</p>
 <h3 id="4-3-1-修改主题颜色"><a href="#4-3-1-修改主题颜色" class="headerlink" title="4.3.1 修改主题颜色"></a>4.3.1 修改主题颜色</h3><p>在主题文件的 <code>/source/css/matery.css</code> 文件中，搜索 <code>.bg-color</code> 来修改背景颜色：</p>
-<pre><code>/* 整体背景颜色，包括导航、移动端的导航、页尾、标签页等的背景颜色. */
+<pre class="line-numbers language-none"><code class="language-none">/* 整体背景颜色，包括导航、移动端的导航、页尾、标签页等的背景颜色. */
 .bg-color {
     background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
 }
@@ -806,25 +803,25 @@ livere:
 }
 @keyframes rainbow {
     /* 动态切换背景颜色. */
-}
-</code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>Tips：建议使用第三方工具（如IDE）打开css文件，使用查找功能（ctrl + f）来快速定位</strong></p>
 <h3 id="4-3-2-修改banner图和文章特色图"><a href="#4-3-2-修改banner图和文章特色图" class="headerlink" title="4.3.2 修改banner图和文章特色图"></a>4.3.2 修改banner图和文章特色图</h3><p>你可以直接在 <code>/source/medias/banner</code> 文件夹中更换你喜欢的 <code>banner</code> 图片，主题代码中是每天动态切换一张，只需 <code>7</code> 张即可。如果你会 <code>JavaScript</code> 代码，可以修改成你自己喜欢切换逻辑，如：随机切换等，<code>banner</code> 切换的代码位置在 <code>/layout/_partial/bg-cover-content.ejs</code> 文件的 `` 代码中：</p>
-<pre><code>$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>说明： banner图即为你博客主页所显示的图片 （默认为 <code>0.jpg</code> ）</p>
 <h3 id="4-3-3-修改网站上的相关信息"><a href="#4-3-3-修改网站上的相关信息" class="headerlink" title="4.3.3 修改网站上的相关信息"></a>4.3.3 修改网站上的相关信息</h3><p>首先看图：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/Yafine/Yafine-imgs/images/20200115115221.png" alt="img"></p>
 <p>相关配置信息如下：</p>
-<pre><code>#这是根目录下的配置文件信息
-title: 过客~励む                                                   #这是网站标题
-subtitle: 励む                                                 #这是网站副标题subtitler
+<pre class="line-numbers language-none"><code class="language-none">#这是根目录下的配置文件信息
+title: 过客~励む   												#这是网站标题
+subtitle: 励む    											 #这是网站副标题subtitler
 # 下面两个description,keywords，需要填上，如果想让搜索引擎收录，这个做SEO优化必不可忽视的两个属性
-description: 专注于Web,分享生活,分享知识                              #网站描述
-keywords: [HTML, CSS, JavaScript, JQuery, React, Vue.js等]       #网站的关键词
-author: YangAir                                                #作者，文章版权所显示的
-language: zh-CN                                                 #网站语言，不填写，默认为英文
-timezone:                                                      #时区，可以不填写
+description: 专注于Web,分享生活,分享知识  							#网站描述
+keywords: [HTML, CSS, JavaScript, JQuery, React, Vue.js等] 	  #网站的关键词
+author: YangAir 											   #作者，文章版权所显示的
+language: zh-CN  											   #网站语言，不填写，默认为英文
+timezone:   												   #时区，可以不填写
 # 这是主题配置文件的相关信息
 # 配置网站favicon和网站LOGO
 # 此处我用的CDN，也可以使用本地文件
@@ -845,11 +842,11 @@ subtitle:
   sub3: 没有伞的孩子必须努力奔跑！
   sub4: 欲望以提升热忱，毅力以磨平高山。
   sub5: 如果放弃太早，你永远都不知道自己会错过什么。
-  sub6: 没有礁石，就没有美丽的浪花；没有挫折，就没有壮丽的人生。
-</code></pre>
+  sub6: 没有礁石，就没有美丽的浪花；没有挫折，就没有壮丽的人生。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>注意：</strong></p>
 <p>网站打字效果副标题默认有两个，即 <code>sub1</code> 和 <code>sub2</code>，如果想写多个，则需要修改两处地方，首先修改配置文件，如上面所示，在 <code>sub1</code> 和 <code>sub2</code> 后面继续添加即可，然后在去主题目录下的 <code>layout</code> 文件夹下的<code>_partial</code> 文件夹，修改 <code>bg-cover-content.ejs</code> 文件，大约在 12 行左右，如下面所示：</p>
-<pre><code> &lt;div class="description center-align"&gt;
+<pre class="line-numbers language-none"><code class="language-none"> &lt;div class="description center-align"&gt;
      &lt;% if (theme.subtitle.enable) { %&gt;
          &lt;span id="subtitle"&gt;&lt;/span&gt;
          &lt;script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"&gt;&lt;/script&gt;
@@ -871,10 +868,10 @@ subtitle:
       &lt;% } else { %&gt;
             &lt;%= config.description %&gt;
       &lt;% } %&gt;
-&lt;/div&gt;
-</code></pre>
+&lt;/div&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="4-3-4-在关于我页面添加个人简历"><a href="#4-3-4-在关于我页面添加个人简历" class="headerlink" title="4.3.4 在关于我页面添加个人简历"></a>4.3.4 在关于我页面添加个人简历</h3><p>打开 <code>theme/matery/layout/about.ejs</code> 文件，大约在 13 行。有一个 `` 标签，找出其对应结尾的标签，大约在 61 行左右，然后在新增如下代码：</p>
-<pre><code>&lt;div class="card"&gt;
+<pre class="line-numbers language-none"><code class="language-none">&lt;div class="card"&gt;
      &lt;div class="card-content"&gt;
          &lt;div class="card-content article-card-content"&gt;
              &lt;div class="title center-align" data-aos="zoom-in-up"&gt;
@@ -885,8 +882,8 @@ subtitle:
                  &lt;/div&gt;
            &lt;/div&gt;
       &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
+&lt;/div&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>注意粘贴的位置和空格要正确，这里的位置随你自己设置，你也可以把简历作为第一个 card，然后 <code>/source/about/index.md</code> 下面写上你的简历了（就像写博客一样）。</p>
 <h1 id="五、博客的编写以及推送"><a href="#五、博客的编写以及推送" class="headerlink" title="五、博客的编写以及推送"></a>五、博客的编写以及推送</h1><ul>
 <li>第一步：创建<code>.md</code>文件</li>
@@ -894,20 +891,20 @@ subtitle:
 <p> 方法1：定位到我们的hexo根目录，Git Bash Here 中执行命令：  </p>
 <p><code>hexo new 'my-first-blog'</code>    其中引号内为文章名称         </p>
 <p>hexo会帮我们在<code>D:\JAVA项目\HexoData\source\_posts</code> 下生成相关.md文件，用这个命令的好处是帮我们自动生成了时间，方法1默认生成如下内容：</p>
-<pre><code>title: my-first-blot
+<pre class="line-numbers language-none"><code class="language-none">title: my-first-blot
 date: 2021-11-29 18:21:30
-tags:
-</code></pre>
+tags:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>方法2：当然你也可以直接自己打开<code>D:\JAVA项目\HexoData\source\_posts</code> 目录新建<code>.md</code>文件 </p>
 <ul>
 <li><p>第二步：编写并保存 </p>
 <p>我们只需要用typora打开这个文件就可以开始写博客了，写完后Ctrl+S 保存关闭即可 </p>
 </li>
 <li><p>第三步：清理然后再生成一下，生成后推送到远程仓库即可，hexo根目录下右键Git Bash Here 中依次输入如下命令：</p>
-<pre><code>hexo clean
+<pre class="line-numbers language-none"><code class="language-none">hexo clean
 hexo g
-hexo d 
-</code></pre>
+hexo d <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>补充：<code>hexo new page 'postName'</code>命令和<code>hexo new 'postName'</code>的区别？</strong> </p>
 </li>
 </ul>
