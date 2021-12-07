@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>分布式入门 | LaughingCat</title>
+    <title>Dubbo + Zookeeper介绍 | LaughingCat</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -227,12 +227,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">分布式入门</h1>
+                    <h1 class="description center-align post-title">Dubbo + Zookeeper介绍</h1>
                 </div>
             </div>
         </div>
@@ -377,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-12-04
+                    2021-12-07
                 </div>
                 
 
@@ -391,14 +391,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    703
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    5 分
                 </div>
                 
 
@@ -421,26 +421,72 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、分布式理论"><a href="#一、分布式理论" class="headerlink" title="一、分布式理论"></a>一、分布式理论</h1><p><strong>什么是分布式系统？</strong></p>
-<p>在《分布式系统原理与范型》一书中有如下定义：“分布式系统是<strong>若干独立计算机的集合</strong>，这些计算机对于用户来说就像单个相关系统”</p>
-<p>分布式系统是<strong>由一组过网络进行涌信、为了完成共同的任务而协调工作的计算机节点组成的系统</strong>。分布式系统的出现是为了用廉价的、普通的机器完成单个计算机无法完成的计算、存储任务。具目的是利用更多的机器处理更多的数据。</p>
-<p>分布式系统(distributedsystem)是建立在网络之上的软件系统。</p>
-<p>首先需要明确的是，只有当单个节点的处理能力无法满足日益增长的计算、存储任务的时候，且硬件的提升（加内存、加磁、使用更好的CPU）高昂到得不偿失的时候，应用程序也不能进一步优化的时候，我们才需要考虑分布式系统。因为，分布式系统要解决的问题本身就是和单机系统一样的，而由于分布式系统多节点、通过网络通信的拓扑结构，会引入很多单机系统没有的问题，为了解决这些问题又会引入更多的机制、协议，带来更多的问题。</p>
-<h1 id="二、RPC框架"><a href="#二、RPC框架" class="headerlink" title="二、RPC框架"></a>二、RPC框架</h1><p><strong>什么是RPC？</strong></p>
-<p>RPC（Remote Procedure Call）是指<strong>远程过程调用，是一种进程间涌信方式，他是一种技术的思想，而不是规范</strong>。它允许程序调用另一个地址空间〈通常是共享网络的另一台机器上）的过程或函数，而不用程序员显式编码这个远程调用的细节。即程序员无论是调用本地的还是远程的函数，本质上编写的调用代码基本相同。</p>
-<p>也就是说两台服务器A，B，一个应用部署在A服务器上，想要调用B服务器上应用提供的函数／方法，由于不在一个内存空间，不能直接调用，需要通过网络来表达调用的语义和传达调用的数据。</p>
-<p><strong>为什么要用RPC呢？</strong></p>
-<p>就是无法在一个进程内，甚至一个计算机内通过本地调用的方式完成的需求，比如不同的系统间的讯，甚至不同的组织间的通讯，由于计算能力需要横向扩展，需要在多台机器组成的集群上部署应用。RPC就是要像调用本地的函数一样去调远程函数。</p>
-<p><strong>图解RPC框架</strong></p>
-<img src="/2021/12/04/fen-bu-shi-ru-men/1.png" class="" title="RPC基本原理">
+                <h1 id="一、Dubbo"><a href="#一、Dubbo" class="headerlink" title="一、Dubbo"></a>一、Dubbo</h1><h2 id="1-1-什么是Dubbo"><a href="#1-1-什么是Dubbo" class="headerlink" title="1.1 什么是Dubbo?"></a>1.1 <strong>什么是Dubbo?</strong></h2><p>Apache Dubbo 是一款高性能、轻量级的开源Java RPC框架。</p>
+<p>它提供了三大核心能力：</p>
+<p><strong>面向接口的远程方法调用</strong></p>
+<p><strong>智能容错和负载均衡</strong></p>
+<p><strong>服务自动注册和发现</strong></p>
+<p> <a target="_blank" rel="noopener" href="https://dubbo.apache.org/zh/">dubbo官网</a> </p>
+<p>随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应对，分布式服务架构以及流动计算架构势在必行，急需一个治理系统确保架构有条不紊的演进。</p>
+<p>在Dubbo的官网文档有这样一张图：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/90d8839b7de5d414d00d8d18d4fc38fe.png" alt="传统网站架构向分布式架构过渡"></p>
+<p><strong>该图显示了传统应用网站架构是如何向分布式架构过渡的</strong></p>
+<img src="/2021/12/07/dubbozookeeper-jie-shao/1.png" class="" title="单一应用结构">
+
+<img src="/2021/12/07/dubbozookeeper-jie-shao/2.png" class="" title="垂直应用架构">
+
+<img src="/2021/12/07/dubbozookeeper-jie-shao/3.png" class="" title="分布式架构">
+
+<img src="/2021/12/07/dubbozookeeper-jie-shao/4.png" class="" title="流动计算架构">
 
 
 
-<img src="/2021/12/04/fen-bu-shi-ru-men/2.png" class="" title="RPC调用流程">
+<h2 id="1-2-Dubbo-架构"><a href="#1-2-Dubbo-架构" class="headerlink" title="1.2 Dubbo 架构"></a>1.2 Dubbo 架构</h2><img src="/2021/12/07/dubbozookeeper-jie-shao/5.png" class="" title="Dubbo架构图">
 
 
 
-<p><strong>可以发现RPC的两个核心模块为：通讯、序列化</strong></p>
+<p><strong>服务提供者(Provider)：</strong>暴露服务的服务提供方，服务提供者在启动时，向注册中心注册自己提供的服务。</p>
+<p><strong>服务消费者(Consumer)：</strong>调用远程服务的服务消费方，服务消费者在启动时，向注册中心订阅自己所需的服务，服务消<br>费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。</p>
+<p><strong>注册中心（Registry)：</strong>注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。</p>
+<p><strong>监控中心(Monitor)：</strong>服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</p>
+<h2 id="1-3-调用关系说明"><a href="#1-3-调用关系说明" class="headerlink" title="1.3 调用关系说明"></a>1.3 调用关系说明</h2><p><strong>调用关系说明</strong></p>
+<p>| 服务容器负启动，加载，运行服务提供者。</p>
+<p>| 服务提供者在启动时，向注册中心注册自己提供的服务。</p>
+<p>| 服务消费者在启动时，向注册中心订阅自己所需的服务。</p>
+<p>| 注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。</p>
+<p>| 服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。</p>
+<p>| 服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</p>
+<h2 id="1-4-Dubbo说明"><a href="#1-4-Dubbo说明" class="headerlink" title="1.4 Dubbo说明"></a>1.4 Dubbo说明</h2><p>dobbo本身并不是一个软件。</p>
+<p>它其实就是一个jar包，能够帮你的java程序连接到zookeeper注册中心，并利用zookeeper消费以及提供服务</p>
+<p>但是为了让用户更好的管理和监控众多的dubbo服务，dubbo官方提供了一个可视化的监控程序—dubbo admin，不过这个监控程序不按照也不会影响dubbo的使用。</p>
+<h1 id="二、Zookeeper"><a href="#二、Zookeeper" class="headerlink" title="二、Zookeeper"></a>二、Zookeeper</h1><h2 id="2-1-什么是zookeeper"><a href="#2-1-什么是zookeeper" class="headerlink" title="2.1 什么是zookeeper?"></a>2.1 什么是zookeeper?</h2><p>​        官方文档上这么解释zookeeper，它是一个分布式服务框架，是Apache Hadoop 的一个子项目，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，如：<strong>统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理</strong>等。</p>
+<p>上面的解释有点抽象，简单来说  <strong>zookeeper=文件系统+监听通知机制</strong>。</p>
+<h2 id="2-2-zookeeper的功能"><a href="#2-2-zookeeper的功能" class="headerlink" title="2.2 zookeeper的功能"></a>2.2 zookeeper的功能</h2><p><strong>1、文件系统</strong></p>
+<p>Zookeeper维护一个类似文件系统的数据结构：</p>
+<p><img src="https://img-blog.csdn.net/201807121434154?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2phdmFfNjY2NjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p>每个子目录项如 NameService 都被称作为 znode(目录节点)，和文件系统一样，我们能够自由的增加、删除znode，在一个znode下增加、删除子znode，唯一的不同在于znode是可以存储数据的。</p>
+<p>有四种类型的znode：</p>
+<ul>
+<li><p><strong>PERSISTENT-持久化目录节点</strong></p>
+<p>客户端与zookeeper断开连接后，该节点依旧存在</p>
+</li>
+<li><p><strong>PERSISTENT_SEQUENTIAL-持久化顺序编号目录节点</strong></p>
+<p>客户端与zookeeper断开连接后，该节点依旧存在，只是Zookeeper给该节点名称进行顺序编号</p>
+</li>
+<li><p><strong>EPHEMERAL-临时目录节点</strong></p>
+<p>客户端与zookeeper断开连接后，该节点被删除</p>
+</li>
+<li><p><strong>EPHEMERAL_SEQUENTIAL-临时顺序编号目录节点</strong></p>
+<p>客户端与zookeeper断开连接后，该节点被删除，只是Zookeeper给该节点名称进行顺序编号</p>
+</li>
+</ul>
+<p><strong>2、监听通知机制</strong></p>
+<p>客户端注册监听它关心的目录节点，当目录节点发生变化（数据改变、被删除、子目录节点增加删除）时，zookeeper会通知客户端。</p>
+<h2 id="2-3-分布式应用配置管理举例"><a href="#2-3-分布式应用配置管理举例" class="headerlink" title="2.3 分布式应用配置管理举例"></a>2.3 分布式应用配置管理举例</h2><p>假设我们的程序是分布式部署在多台机器上，如果我们要改变程序的配置文件，需要逐台机器去修改，非常麻烦，现在把这些配置全部放到zookeeper上去，保存在 zookeeper 的某个目录节点中，然后所有相关应用程序对这个目录节点进行监听，一旦配置信息发生变化，每个应用程序就会收到 zookeeper 的通知，然后从 zookeeper 获取新的配置信息应用到系统中。</p>
+<p><img src="https://img-blog.csdn.net/20180712143454552?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2phdmFfNjY2NjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="分布式应用举例"></p>
+<p>参考文献：</p>
+<p>1、<a target="_blank" rel="noopener" href="https://blog.csdn.net/java_66666/article/details/81015302?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163886867716780271586538%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=163886867716780271586538&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-81015302.first_rank_v2_pc_rank_v29&amp;utm_term=zookeeper&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/java_66666/article/details/81015302?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163886867716780271586538%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=163886867716780271586538&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-81015302.first_rank_v2_pc_rank_v29&amp;utm_term=zookeeper&amp;spm=1018.2226.3001.4187</a></p>
+<p>2、<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41819988/article/details/109606328?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=%E7%8B%82%E7%A5%9E%E8%AF%B4zookeep%20%E7%AC%94%E8%AE%B0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-109606328.first_rank_v2_pc_rank_v29&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/qq_41819988/article/details/109606328?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=%E7%8B%82%E7%A5%9E%E8%AF%B4zookeep%20%E7%AC%94%E8%AE%B0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-109606328.first_rank_v2_pc_rank_v29&amp;spm=1018.2226.3001.4187</a></p>
 
                 
             </div>
@@ -467,7 +513,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Motherkillermaker.github.io/2021/12/04/fen-bu-shi-ru-men/">http://Motherkillermaker.github.io/2021/12/04/fen-bu-shi-ru-men/</a>
+                    <a href="http://Motherkillermaker.github.io/2021/12/07/dubbozookeeper-jie-shao/">http://Motherkillermaker.github.io/2021/12/07/dubbozookeeper-jie-shao/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -818,9 +864,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/12/07/dubbozookeeper-jie-shao/">
                     <div class="card-image">
@@ -838,9 +885,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -853,6 +900,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -875,13 +923,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/29/ru-he-kuai-su-da-jian-shu-yu-zi-ji-de-bo-ke/">
+                <a href="/2021/12/04/fen-bu-shi-ru-men/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="如何快速搭建属于自己的专属博客~">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="分布式入门">
                         
-                        <span class="card-title">如何快速搭建属于自己的专属博客~</span>
+                        <span class="card-title">分布式入门</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -892,14 +940,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-04
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%96%87%E7%AB%A0/" class="post-category">
-                                    文章
+                            <a href="/categories/%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    技术
                                 </a>
                             
                             
@@ -909,8 +957,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/">
-                        <span class="chip bg-color">第一篇博文</span>
+                    <a href="/tags/SpringCloud/">
+                        <span class="chip bg-color">SpringCloud</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
+                        <span class="chip bg-color">分布式</span>
                     </a>
                     
                 </div>
