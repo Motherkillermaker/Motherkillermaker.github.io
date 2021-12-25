@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="分布式">
+    <meta name="keywords" content="微服务">
     <meta name="description" content="专注于Web,分享生活,分享知识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Dubbo + Zookeeper介绍 | LaughingCat</title>
+    <title>微服务概述 | LaughingCat</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -227,12 +227,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Dubbo + Zookeeper介绍</h1>
+                    <h1 class="description center-align post-title">微服务概述</h1>
                 </div>
             </div>
         </div>
@@ -348,12 +348,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/SpringCloud/">
-                                <span class="chip bg-color">SpringCloud</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
-                                <span class="chip bg-color">分布式</span>
+                            <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
+                                <span class="chip bg-color">微服务</span>
                             </a>
                         
                     </div>
@@ -377,28 +373,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-12-07
+                    2021-12-25
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-12-07
+                    2021-12-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 
@@ -421,72 +417,182 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、Dubbo"><a href="#一、Dubbo" class="headerlink" title="一、Dubbo"></a>一、Dubbo</h1><h2 id="1-1-什么是Dubbo"><a href="#1-1-什么是Dubbo" class="headerlink" title="1.1 什么是Dubbo?"></a>1.1 <strong>什么是Dubbo?</strong></h2><p>Apache Dubbo 是一款高性能、轻量级的开源Java RPC框架。</p>
-<p>它提供了三大核心能力：</p>
-<p><strong>面向接口的远程方法调用</strong></p>
-<p><strong>智能容错和负载均衡</strong></p>
-<p><strong>服务自动注册和发现</strong></p>
-<p> <a target="_blank" rel="noopener" href="https://dubbo.apache.org/zh/">dubbo官网</a> </p>
-<p>随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应对，分布式服务架构以及流动计算架构势在必行，急需一个治理系统确保架构有条不紊的演进。</p>
-<p>在Dubbo的官网文档有这样一张图：</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/90d8839b7de5d414d00d8d18d4fc38fe.png" alt="传统网站架构向分布式架构过渡"></p>
-<p><strong>该图显示了传统应用网站架构是如何向分布式架构过渡的</strong></p>
-<img src="/2021/12/07/dubbozookeeper-jie-shao/1.png" class="" title="单一应用结构">
-
-<img src="/2021/12/07/dubbozookeeper-jie-shao/2.png" class="" title="垂直应用架构">
-
-<img src="/2021/12/07/dubbozookeeper-jie-shao/3.png" class="" title="分布式架构">
-
-<img src="/2021/12/07/dubbozookeeper-jie-shao/4.png" class="" title="流动计算架构">
-
-
-
-<h2 id="1-2-Dubbo-架构"><a href="#1-2-Dubbo-架构" class="headerlink" title="1.2 Dubbo 架构"></a>1.2 Dubbo 架构</h2><img src="/2021/12/07/dubbozookeeper-jie-shao/5.png" class="" title="Dubbo架构图">
-
-
-
-<p><strong>服务提供者(Provider)：</strong>暴露服务的服务提供方，服务提供者在启动时，向注册中心注册自己提供的服务。</p>
-<p><strong>服务消费者(Consumer)：</strong>调用远程服务的服务消费方，服务消费者在启动时，向注册中心订阅自己所需的服务，服务消<br>费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。</p>
-<p><strong>注册中心（Registry)：</strong>注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。</p>
-<p><strong>监控中心(Monitor)：</strong>服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</p>
-<h2 id="1-3-调用关系说明"><a href="#1-3-调用关系说明" class="headerlink" title="1.3 调用关系说明"></a>1.3 调用关系说明</h2><p><strong>调用关系说明</strong></p>
-<p>| 服务容器负启动，加载，运行服务提供者。</p>
-<p>| 服务提供者在启动时，向注册中心注册自己提供的服务。</p>
-<p>| 服务消费者在启动时，向注册中心订阅自己所需的服务。</p>
-<p>| 注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。</p>
-<p>| 服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。</p>
-<p>| 服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</p>
-<h2 id="1-4-Dubbo说明"><a href="#1-4-Dubbo说明" class="headerlink" title="1.4 Dubbo说明"></a>1.4 Dubbo说明</h2><p>dobbo本身并不是一个软件。</p>
-<p>它其实就是一个jar包，能够帮你的java程序连接到zookeeper注册中心，并利用zookeeper消费以及提供服务</p>
-<p>但是为了让用户更好的管理和监控众多的dubbo服务，dubbo官方提供了一个可视化的监控程序—dubbo admin，不过这个监控程序不按照也不会影响dubbo的使用。</p>
-<h1 id="二、Zookeeper"><a href="#二、Zookeeper" class="headerlink" title="二、Zookeeper"></a>二、Zookeeper</h1><h2 id="2-1-什么是zookeeper"><a href="#2-1-什么是zookeeper" class="headerlink" title="2.1 什么是zookeeper?"></a>2.1 什么是zookeeper?</h2><p>​        官方文档上这么解释zookeeper，它是一个分布式服务框架，是Apache Hadoop 的一个子项目，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，如：<strong>统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理</strong>等。</p>
-<p>上面的解释有点抽象，简单来说  <strong>zookeeper=文件系统+监听通知机制</strong>。</p>
-<h2 id="2-2-zookeeper的功能"><a href="#2-2-zookeeper的功能" class="headerlink" title="2.2 zookeeper的功能"></a>2.2 zookeeper的功能</h2><p><strong>1、文件系统</strong></p>
-<p>Zookeeper维护一个类似文件系统的数据结构：</p>
-<p><img src="https://img-blog.csdn.net/201807121434154?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2phdmFfNjY2NjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
-<p>每个子目录项如 NameService 都被称作为 znode(目录节点)，和文件系统一样，我们能够自由的增加、删除znode，在一个znode下增加、删除子znode，唯一的不同在于znode是可以存储数据的。</p>
-<p>有四种类型的znode：</p>
+                <h1 id="一、为什么需要微服务架构"><a href="#一、为什么需要微服务架构" class="headerlink" title="一、为什么需要微服务架构"></a>一、为什么需要微服务架构</h1><p><strong>使用微服务架构的核心：解耦</strong></p>
+<h2 id="1-1-什么是微服务"><a href="#1-1-什么是微服务" class="headerlink" title="1.1 什么是微服务"></a>1.1 什么是微服务</h2><p>微服务(Microservice Architecture) 是近几年流行的一种架构思想，关于它的概念很难一言以蔽之。</p>
 <ul>
-<li><p><strong>PERSISTENT-持久化目录节点</strong></p>
-<p>客户端与zookeeper断开连接后，该节点依旧存在</p>
+<li>就目前而言，对于微服务，业界并没有一个统一的，标准的定义。</li>
+<li>但通常而言，微服务架构是一种架构模式，或者说是一种架构风格，<strong>它体长将单一的应用程序划分成一组小的服务</strong>，每个服务运行在其独立的自己的进程内，服务之间互相协调，互相配置，为用户提供最终价值，服务之间采用轻量级的通信机制(<strong>HTTP</strong>)互相沟通，每个服务都围绕着具体的业务进行构建，并且能狗被独立的部署到生产环境中，另外，应尽量避免统一的，集中式的服务管理机制，对具体的一个服务而言，应该根据业务上下文，选择合适的语言，工具(<strong>Maven</strong>)对其进行构建，可以有一个非常轻量级的集中式管理来协调这些服务，可以使用不同的语言来编写服务，也可以使用不同的数据存储。</li>
+</ul>
+<p>再来从技术维度角度理解下：</p>
+<ul>
+<li>微服务化的核心就是将传统的一站式应用，根据业务拆分成一个一个的服务，彻底地去耦合，每一个微服务提供单个业务功能的服务，一个服务做一件事情，从技术角度看就是一种小而独立的处理过程，类似进程的概念，能够自行单独启动或销毁，拥有自己独立的数据库。</li>
+</ul>
+<h2 id="1-2-微服务与微服务架构"><a href="#1-2-微服务与微服务架构" class="headerlink" title="1.2 微服务与微服务架构"></a>1.2 微服务与微服务架构</h2><p><strong>微服务</strong></p>
+<p>强调的是服务的大小，它关注的是某一个点，是具体解决某一个问题/提供落地对应服务的一个服务应用，狭义的看，可以看作是IDEA中的一个个微服务工程，或者Moudel。IDEA 工具里面使用Maven开发的一个个独立的小Moudel，它具体是使用SpringBoot开发的一个小模块，专业的事情交给专业的模块来做，一个模块就做着一件事情。强调的是一个个的个体，每个个体完成一个具体的任务或者功能。</p>
+<p><strong>微服务架构</strong></p>
+<p>一种新的架构形式，Martin Fowler 于2014年提出。</p>
+<p>微服务架构是一种架构模式，它体长将单一应用程序划分成一组小的服务，服务之间相互协调，互相配合，为用户提供最终价值。每个服务运行在其独立的进程中，服务与服务之间采用轻量级的通信机制**(如HTTP)<strong>互相协作，</strong>每个服务都围绕着具体的业务进行构建，并且能够被独立的部署到生产环境中，另外，应尽量避免统一的，集中式的服务管理机制，对具体的一个服务而言，应根据业务上下文，选择合适的语言、工具(如Maven)对其进行构建。**</p>
+<h2 id="1-3-微服务的优缺点"><a href="#1-3-微服务的优缺点" class="headerlink" title="1.3 微服务的优缺点"></a>1.3 微服务的优缺点</h2><p>优点</p>
+<ul>
+<li>单一职责原则；</li>
+<li>每个服务足够内聚，足够小，代码容易理解，这样能聚焦一个指定的业务功能或业务需求；</li>
+<li>开发简单，开发效率高，一个服务可能就是专一的只干一件事；</li>
+<li>微服务能够被小团队单独开发，这个团队只需2-5个开发人员组成；</li>
+<li>微服务是松耦合的，是有功能意义的服务，无论是在开发阶段或部署阶段都是独立的；</li>
+<li>微服务能使用不同的语言开发；</li>
+<li>易于和第三方集成，微服务允许容易且灵活的方式集成自动部署，通过持续集成工具，如jenkins，Hudson，bamboo；</li>
+<li>微服务易于被一个开发人员理解，修改和维护，这样小团队能够更关注自己的工作成果，无需通过合作才能体现价值；</li>
+<li>微服务允许利用和融合最新技术；</li>
+<li><strong>微服务只是业务逻辑的代码，不会和HTML，CSS，或其他的界面混合;</strong></li>
+<li><strong>每个微服务都有自己的存储能力，可以有自己的数据库，也可以有统一的数据库；</strong></li>
+</ul>
+<p>​    缺点</p>
+<ul>
+<li>开发人员要处理分布式系统的复杂性；</li>
+<li>多服务运维难度，随着服务的增加，运维的压力也在增大；</li>
+<li>系统部署依赖问题；</li>
+<li>服务间通信成本问题；</li>
+<li>数据一致性问题；</li>
+<li>系统集成测试问题；</li>
+<li>性能和监控问题；</li>
+</ul>
+<h2 id="1-4-微服务技术栈"><a href="#1-4-微服务技术栈" class="headerlink" title="1.4 微服务技术栈"></a>1.4 微服务技术栈</h2><table>
+<thead>
+<tr>
+<th><strong>微服务技术条目</strong></th>
+<th>落地技术</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>服务开发</td>
+<td>SpringBoot、Spring、SpringMVC等</td>
+</tr>
+<tr>
+<td>服务配置与管理</td>
+<td>Netfix公司的Archaius、阿里的Diamond等</td>
+</tr>
+<tr>
+<td>服务注册与发现</td>
+<td>Eureka、Consul、Zookeeper等</td>
+</tr>
+<tr>
+<td>服务调用</td>
+<td>Rest、PRC、gRPC</td>
+</tr>
+<tr>
+<td>服务熔断器</td>
+<td>Hystrix、Envoy等</td>
+</tr>
+<tr>
+<td>负载均衡</td>
+<td>Ribbon、Nginx等</td>
+</tr>
+<tr>
+<td>服务接口调用(客户端调用服务的简化工具)</td>
+<td>Fegin等</td>
+</tr>
+<tr>
+<td>消息队列</td>
+<td>Kafka、RabbitMQ、ActiveMQ等</td>
+</tr>
+<tr>
+<td>服务配置中心管理</td>
+<td>SpringCloudConfig、Chef等</td>
+</tr>
+<tr>
+<td>服务路由(API网关)</td>
+<td>Zuul等</td>
+</tr>
+<tr>
+<td>服务监控</td>
+<td>Zabbix、Nagios、Metrics、Specatator等</td>
+</tr>
+<tr>
+<td>全链路追踪</td>
+<td>Zipkin、Brave、Dapper等</td>
+</tr>
+<tr>
+<td>数据流操作开发包</td>
+<td>SpringCloud Stream(封装与Redis，Rabbit，Kafka等发送接收消息)</td>
+</tr>
+<tr>
+<td>时间消息总栈</td>
+<td>SpringCloud Bus</td>
+</tr>
+<tr>
+<td>服务部署</td>
+<td>Docker、OpenStack、Kubernetes等</td>
+</tr>
+</tbody></table>
+<h1 id="二、微服务架构问题解决方案"><a href="#二、微服务架构问题解决方案" class="headerlink" title="二、微服务架构问题解决方案"></a>二、微服务架构问题解决方案</h1><h2 id="2-1-微服务架构问题"><a href="#2-1-微服务架构问题" class="headerlink" title="2.1 微服务架构问题"></a>2.1 微服务架构问题</h2><p>分布式架构会遇到的四个核心问题?</p>
+<p><strong>1.这么多服务，客户端该如何去访问?</strong></p>
+<p><strong>2.这么多服务，服务之间如何进行通信?</strong></p>
+<p><strong>3.这么多服务，如何治理呢?</strong></p>
+<p><strong>4.服务挂了，怎么办?</strong></p>
+<p>对此，目前市场上提出了主流的三种方案</p>
+<ol>
+<li><strong>Spring Cloud NetFlix 出来了一套解决方案!  而且是一站式解决方案。</strong></li>
+</ol>
+<p>服务访问        =&gt;        Api网关，zuu1组件</p>
+<p>服务通信        =&gt;        Feign –&gt; HttpClient —&gt; HTTP的通信方式 ( 同步并阻塞 )</p>
+<p>服务治理        =&gt;        Eureka ( 服务注册与发现 )</p>
+<p>服务熔断        =&gt;        Hystrix  ( 熔断机制 )</p>
+<p>但 2018年年底，NetFlix宣布无限期停止维护。生态不再维护。</p>
+<ol start="2">
+<li><strong>Apache Dubbo zookeeper，第二套解决方案</strong></li>
+</ol>
+<p>服务访问        =&gt;        API 没有，要么找第三方组件，要么自己实现</p>
+<p>服务通信        =&gt;        Dubbo （基于Java实现的高性能RPC通信框架）</p>
+<p>服务治理        =&gt;        zookeeper ( 服务注册与发现 )</p>
+<p>服务熔断        =&gt;        没有，但借助了Hystrix</p>
+<ol start="3">
+<li><strong>SpringCloud Alibaba - 站式解决方案!</strong></li>
+</ol>
+<p>服务访问        =&gt;        Gateway</p>
+<p>服务通信        =&gt;        Feign –&gt; HttpClient —&gt; HTTP的通信方式 ( 同步并阻塞 )</p>
+<p>服务治理        =&gt;        Nacos( 服务注册与发现 )</p>
+<p>服务熔断        =&gt;        Sentinel  ( 限流降级 )</p>
+<p>负载均衡        =&gt;        Ribbon</p>
+<p>消息驱动        =&gt;        RocketMQ</p>
+<p>目前，又提出了一种方案:</p>
+<p>服务网格: 下一代微服务标准，Server Mesh</p>
+<p>但万变不离其宗，主要还是解决以下问题：</p>
+<ol>
+<li><strong>API网关，服务路由 （服务访问）</strong></li>
+<li><strong>HTTP, RPC框架，异步调用 （服务通信）</strong></li>
+<li><strong>服务注册与发现，高可用 （服务治理）</strong></li>
+<li><strong>熔断机制，服务降级 （服务熔断）</strong></li>
+</ol>
+<p><strong>目前一般网站的分布式架构图</strong></p>
+<img src="/2021/12/25/wei-fu-wu-gai-shu/4.png" class="" title="分布式架构图">
+
+
+
+<h2 id="2-2-为什么选择SpringCloud作为微服务架构"><a href="#2-2-为什么选择SpringCloud作为微服务架构" class="headerlink" title="2.2 为什么选择SpringCloud作为微服务架构"></a>2.2 为什么选择SpringCloud作为微服务架构</h2><ol>
+<li><p><strong>选型依据</strong></p>
+<ul>
+<li>整体解决方案和框架成熟度</li>
+<li>社区热度</li>
+<li>可维护性</li>
+<li>学习曲线</li>
+</ul>
 </li>
-<li><p><strong>PERSISTENT_SEQUENTIAL-持久化顺序编号目录节点</strong></p>
-<p>客户端与zookeeper断开连接后，该节点依旧存在，只是Zookeeper给该节点名称进行顺序编号</p>
+<li><p><strong>当前各大IT公司用的微服务架构有那些？</strong></p>
+<ul>
+<li><p>阿里：dubbo+HFS</p>
 </li>
-<li><p><strong>EPHEMERAL-临时目录节点</strong></p>
-<p>客户端与zookeeper断开连接后，该节点被删除</p>
+<li><p>京东：JFS</p>
 </li>
-<li><p><strong>EPHEMERAL_SEQUENTIAL-临时顺序编号目录节点</strong></p>
-<p>客户端与zookeeper断开连接后，该节点被删除，只是Zookeeper给该节点名称进行顺序编号</p>
+<li><p>新浪：Motan</p>
+</li>
+<li><p>当当网：DubboX</p>
+<p>…</p>
 </li>
 </ul>
-<p><strong>2、监听通知机制</strong></p>
-<p>客户端注册监听它关心的目录节点，当目录节点发生变化（数据改变、被删除、子目录节点增加删除）时，zookeeper会通知客户端。</p>
-<h2 id="2-3-分布式应用配置管理举例"><a href="#2-3-分布式应用配置管理举例" class="headerlink" title="2.3 分布式应用配置管理举例"></a>2.3 分布式应用配置管理举例</h2><p>假设我们的程序是分布式部署在多台机器上，如果我们要改变程序的配置文件，需要逐台机器去修改，非常麻烦，现在把这些配置全部放到zookeeper上去，保存在 zookeeper 的某个目录节点中，然后所有相关应用程序对这个目录节点进行监听，一旦配置信息发生变化，每个应用程序就会收到 zookeeper 的通知，然后从 zookeeper 获取新的配置信息应用到系统中。</p>
-<p><img src="https://img-blog.csdn.net/20180712143454552?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2phdmFfNjY2NjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="分布式应用举例"></p>
-<p>参考文献：</p>
-<p>1、<a target="_blank" rel="noopener" href="https://blog.csdn.net/java_66666/article/details/81015302?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163886867716780271586538%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=163886867716780271586538&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-81015302.first_rank_v2_pc_rank_v29&amp;utm_term=zookeeper&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/java_66666/article/details/81015302?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163886867716780271586538%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=163886867716780271586538&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-81015302.first_rank_v2_pc_rank_v29&amp;utm_term=zookeeper&amp;spm=1018.2226.3001.4187</a></p>
-<p>2、<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41819988/article/details/109606328?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=%E7%8B%82%E7%A5%9E%E8%AF%B4zookeep%20%E7%AC%94%E8%AE%B0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-109606328.first_rank_v2_pc_rank_v29&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/qq_41819988/article/details/109606328?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=%E7%8B%82%E7%A5%9E%E8%AF%B4zookeep%20%E7%AC%94%E8%AE%B0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-109606328.first_rank_v2_pc_rank_v29&amp;spm=1018.2226.3001.4187</a></p>
+</li>
+<li><p><strong>各微服务框架对比</strong></p>
+<img src="/2021/12/25/wei-fu-wu-gai-shu/2.png" class="" title="各微服务框架对比"></li>
+</ol>
 
                 
             </div>
@@ -513,7 +619,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Motherkillermaker.github.io/2021/12/07/dubbozookeeper-jie-shao/">http://Motherkillermaker.github.io/2021/12/07/dubbozookeeper-jie-shao/</a>
+                    <a href="http://Motherkillermaker.github.io/2021/12/25/wei-fu-wu-gai-shu/">http://Motherkillermaker.github.io/2021/12/25/wei-fu-wu-gai-shu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -551,12 +657,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/SpringCloud/">
-                                    <span class="chip bg-color">SpringCloud</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
-                                    <span class="chip bg-color">分布式</span>
+                                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
+                                    <span class="chip bg-color">微服务</span>
                                 </a>
                             
                         </div>
@@ -868,13 +970,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/12/25/wei-fu-wu-gai-shu/">
+                <a href="/2021/12/25/springcloud/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="微服务概述">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="SpringCloud">
                         
-                        <span class="card-title">微服务概述</span>
+                        <span class="card-title">SpringCloud</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -902,8 +1004,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
-                        <span class="chip bg-color">微服务</span>
+                    <a href="/tags/Springcloud/">
+                        <span class="chip bg-color">Springcloud</span>
                     </a>
                     
                 </div>
@@ -917,13 +1019,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/12/04/fen-bu-shi-ru-men/">
+                <a href="/2021/12/07/dubbozookeeper-jie-shao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="分布式入门">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Dubbo + Zookeeper介绍">
                         
-                        <span class="card-title">分布式入门</span>
+                        <span class="card-title">Dubbo + Zookeeper介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -934,7 +1036,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-07
                             </span>
                         <span class="publish-author">
                             

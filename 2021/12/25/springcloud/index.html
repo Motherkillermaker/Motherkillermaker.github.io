@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="分布式">
+    <meta name="keywords" content="SpringCloud">
     <meta name="description" content="专注于Web,分享生活,分享知识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Dubbo + Zookeeper介绍 | LaughingCat</title>
+    <title>SpringCloud | LaughingCat</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -227,12 +227,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Dubbo + Zookeeper介绍</h1>
+                    <h1 class="description center-align post-title">SpringCloud</h1>
                 </div>
             </div>
         </div>
@@ -348,12 +348,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/SpringCloud/">
-                                <span class="chip bg-color">SpringCloud</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
-                                <span class="chip bg-color">分布式</span>
+                            <a href="/tags/Springcloud/">
+                                <span class="chip bg-color">Springcloud</span>
                             </a>
                         
                     </div>
@@ -377,28 +373,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-12-07
+                    2021-12-25
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-12-07
+                    2021-12-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    641
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    2 分
                 </div>
                 
 
@@ -421,72 +417,55 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、Dubbo"><a href="#一、Dubbo" class="headerlink" title="一、Dubbo"></a>一、Dubbo</h1><h2 id="1-1-什么是Dubbo"><a href="#1-1-什么是Dubbo" class="headerlink" title="1.1 什么是Dubbo?"></a>1.1 <strong>什么是Dubbo?</strong></h2><p>Apache Dubbo 是一款高性能、轻量级的开源Java RPC框架。</p>
-<p>它提供了三大核心能力：</p>
-<p><strong>面向接口的远程方法调用</strong></p>
-<p><strong>智能容错和负载均衡</strong></p>
-<p><strong>服务自动注册和发现</strong></p>
-<p> <a target="_blank" rel="noopener" href="https://dubbo.apache.org/zh/">dubbo官网</a> </p>
-<p>随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应对，分布式服务架构以及流动计算架构势在必行，急需一个治理系统确保架构有条不紊的演进。</p>
-<p>在Dubbo的官网文档有这样一张图：</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/90d8839b7de5d414d00d8d18d4fc38fe.png" alt="传统网站架构向分布式架构过渡"></p>
-<p><strong>该图显示了传统应用网站架构是如何向分布式架构过渡的</strong></p>
-<img src="/2021/12/07/dubbozookeeper-jie-shao/1.png" class="" title="单一应用结构">
-
-<img src="/2021/12/07/dubbozookeeper-jie-shao/2.png" class="" title="垂直应用架构">
-
-<img src="/2021/12/07/dubbozookeeper-jie-shao/3.png" class="" title="分布式架构">
-
-<img src="/2021/12/07/dubbozookeeper-jie-shao/4.png" class="" title="流动计算架构">
-
-
-
-<h2 id="1-2-Dubbo-架构"><a href="#1-2-Dubbo-架构" class="headerlink" title="1.2 Dubbo 架构"></a>1.2 Dubbo 架构</h2><img src="/2021/12/07/dubbozookeeper-jie-shao/5.png" class="" title="Dubbo架构图">
-
-
-
-<p><strong>服务提供者(Provider)：</strong>暴露服务的服务提供方，服务提供者在启动时，向注册中心注册自己提供的服务。</p>
-<p><strong>服务消费者(Consumer)：</strong>调用远程服务的服务消费方，服务消费者在启动时，向注册中心订阅自己所需的服务，服务消<br>费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。</p>
-<p><strong>注册中心（Registry)：</strong>注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。</p>
-<p><strong>监控中心(Monitor)：</strong>服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</p>
-<h2 id="1-3-调用关系说明"><a href="#1-3-调用关系说明" class="headerlink" title="1.3 调用关系说明"></a>1.3 调用关系说明</h2><p><strong>调用关系说明</strong></p>
-<p>| 服务容器负启动，加载，运行服务提供者。</p>
-<p>| 服务提供者在启动时，向注册中心注册自己提供的服务。</p>
-<p>| 服务消费者在启动时，向注册中心订阅自己所需的服务。</p>
-<p>| 注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。</p>
-<p>| 服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。</p>
-<p>| 服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</p>
-<h2 id="1-4-Dubbo说明"><a href="#1-4-Dubbo说明" class="headerlink" title="1.4 Dubbo说明"></a>1.4 Dubbo说明</h2><p>dobbo本身并不是一个软件。</p>
-<p>它其实就是一个jar包，能够帮你的java程序连接到zookeeper注册中心，并利用zookeeper消费以及提供服务</p>
-<p>但是为了让用户更好的管理和监控众多的dubbo服务，dubbo官方提供了一个可视化的监控程序—dubbo admin，不过这个监控程序不按照也不会影响dubbo的使用。</p>
-<h1 id="二、Zookeeper"><a href="#二、Zookeeper" class="headerlink" title="二、Zookeeper"></a>二、Zookeeper</h1><h2 id="2-1-什么是zookeeper"><a href="#2-1-什么是zookeeper" class="headerlink" title="2.1 什么是zookeeper?"></a>2.1 什么是zookeeper?</h2><p>​        官方文档上这么解释zookeeper，它是一个分布式服务框架，是Apache Hadoop 的一个子项目，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，如：<strong>统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理</strong>等。</p>
-<p>上面的解释有点抽象，简单来说  <strong>zookeeper=文件系统+监听通知机制</strong>。</p>
-<h2 id="2-2-zookeeper的功能"><a href="#2-2-zookeeper的功能" class="headerlink" title="2.2 zookeeper的功能"></a>2.2 zookeeper的功能</h2><p><strong>1、文件系统</strong></p>
-<p>Zookeeper维护一个类似文件系统的数据结构：</p>
-<p><img src="https://img-blog.csdn.net/201807121434154?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2phdmFfNjY2NjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
-<p>每个子目录项如 NameService 都被称作为 znode(目录节点)，和文件系统一样，我们能够自由的增加、删除znode，在一个znode下增加、删除子znode，唯一的不同在于znode是可以存储数据的。</p>
-<p>有四种类型的znode：</p>
+                <h1 id="一、SpringCloud是什么"><a href="#一、SpringCloud是什么" class="headerlink" title="一、SpringCloud是什么"></a>一、SpringCloud是什么</h1><p>SpringCloud的目标是微服务架构下的一站式解决方案。</p>
+<p><strong>SpringCloud生态图</strong></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9zczIuYmRzdGF0aWMuY29tLzcwY0Z2blNoX1ExWW54R2twb1dLMUhGNmhoeS9pdC91PTE2Mzc3ODY4OTcsNzQ1MTM1MjUxJmZtPTI2JmdwPTAuanBn?x-oss-process=image/format,png" alt="SpringCloud生态图"></p>
+<p><strong>SpringCloud能干嘛？</strong></p>
 <ul>
-<li><p><strong>PERSISTENT-持久化目录节点</strong></p>
-<p>客户端与zookeeper断开连接后，该节点依旧存在</p>
+<li><p>Distributed/versioned configuration 分布式/版本控制配置</p>
 </li>
-<li><p><strong>PERSISTENT_SEQUENTIAL-持久化顺序编号目录节点</strong></p>
-<p>客户端与zookeeper断开连接后，该节点依旧存在，只是Zookeeper给该节点名称进行顺序编号</p>
+<li><p>Service registration and discovery 服务注册与发现</p>
 </li>
-<li><p><strong>EPHEMERAL-临时目录节点</strong></p>
-<p>客户端与zookeeper断开连接后，该节点被删除</p>
+<li><p>Routing 路由</p>
 </li>
-<li><p><strong>EPHEMERAL_SEQUENTIAL-临时顺序编号目录节点</strong></p>
-<p>客户端与zookeeper断开连接后，该节点被删除，只是Zookeeper给该节点名称进行顺序编号</p>
+<li><p>Service-to-service calls 服务到服务的调用</p>
+</li>
+<li><p>Load balancing 负载均衡配置</p>
+</li>
+<li><p>Circuit Breakers 断路器</p>
+</li>
+<li><p>Distributed messaging 分布式消息管理</p>
+</li>
+<li><p>…</p>
 </li>
 </ul>
-<p><strong>2、监听通知机制</strong></p>
-<p>客户端注册监听它关心的目录节点，当目录节点发生变化（数据改变、被删除、子目录节点增加删除）时，zookeeper会通知客户端。</p>
-<h2 id="2-3-分布式应用配置管理举例"><a href="#2-3-分布式应用配置管理举例" class="headerlink" title="2.3 分布式应用配置管理举例"></a>2.3 分布式应用配置管理举例</h2><p>假设我们的程序是分布式部署在多台机器上，如果我们要改变程序的配置文件，需要逐台机器去修改，非常麻烦，现在把这些配置全部放到zookeeper上去，保存在 zookeeper 的某个目录节点中，然后所有相关应用程序对这个目录节点进行监听，一旦配置信息发生变化，每个应用程序就会收到 zookeeper 的通知，然后从 zookeeper 获取新的配置信息应用到系统中。</p>
-<p><img src="https://img-blog.csdn.net/20180712143454552?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2phdmFfNjY2NjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="分布式应用举例"></p>
-<p>参考文献：</p>
-<p>1、<a target="_blank" rel="noopener" href="https://blog.csdn.net/java_66666/article/details/81015302?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163886867716780271586538%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=163886867716780271586538&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-81015302.first_rank_v2_pc_rank_v29&amp;utm_term=zookeeper&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/java_66666/article/details/81015302?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163886867716780271586538%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=163886867716780271586538&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-81015302.first_rank_v2_pc_rank_v29&amp;utm_term=zookeeper&amp;spm=1018.2226.3001.4187</a></p>
-<p>2、<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41819988/article/details/109606328?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=%E7%8B%82%E7%A5%9E%E8%AF%B4zookeep%20%E7%AC%94%E8%AE%B0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-109606328.first_rank_v2_pc_rank_v29&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/qq_41819988/article/details/109606328?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=%E7%8B%82%E7%A5%9E%E8%AF%B4zookeep%20%E7%AC%94%E8%AE%B0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-109606328.first_rank_v2_pc_rank_v29&amp;spm=1018.2226.3001.4187</a></p>
+<h2 id="1-1-SpringCloud和SpringBoot的关系"><a href="#1-1-SpringCloud和SpringBoot的关系" class="headerlink" title="1.1 SpringCloud和SpringBoot的关系"></a>1.1 SpringCloud和SpringBoot的关系</h2><ul>
+<li>SpringBoot专注于开苏方便的开发单个个体微服务；</li>
+<li>SpringCloud是关注全局的微服务协调整理治理框架，它将SpringBoot开发的一个个单体微服务，整合并管理起来，为各个微服务之间提供：配置管理、服务发现、断路器、路由、为代理、事件总栈、全局锁、决策竞选、分布式会话等等集成服务；</li>
+<li>SpringBoot可以离开SpringCloud独立使用，开发项目，但SpringCloud离不开SpringBoot，属于依赖关系；</li>
+<li>SpringBoot专注于快速、方便的开发单个个体微服务，SpringCloud关注全局的服务治理框架；</li>
+</ul>
+<h2 id="1-2-SpringCloud的通信方式"><a href="#1-2-SpringCloud的通信方式" class="headerlink" title="1.2 SpringCloud的通信方式"></a>1.2 SpringCloud的通信方式</h2><p><strong>Spring Cloud 抛弃了Dubbo的RPC通信，采用的是基于HTTP的REST方式</strong></p>
+<p>严格来说，这两种方式各有优劣。虽然从一定程度上来说，后者牺牲了服务调用的性能，但也避免了上面提到的原生RPC带来的问题。而且REST相比RPC更为灵活，服务提供方和调用方的依赖只依靠一纸契约，不存在代码级别的强依赖，这个优点在当下强调快速演化的微服务环境下，显得更加合适。</p>
+<img src="/2021/12/25/springcloud/1.png" class="" title="Dubbo和SpringCloud技术选型">
+
+
+
+<h2 id="1-3-SpringCloud五大件"><a href="#1-3-SpringCloud五大件" class="headerlink" title="1.3 SpringCloud五大件"></a>1.3 SpringCloud五大件</h2><p>服务访问        =&gt;        Netfix Zuul</p>
+<p>服务通信        =&gt;        Feign –&gt; HttpClient —&gt; HTTP的通信方式 ( 同步并阻塞 )</p>
+<p>服务治理        =&gt;        Netfix Eureka( 服务注册与发现 )</p>
+<p>服务熔断        =&gt;        Netfix Hystrix  ( 熔断机制 )</p>
+<p>负载均衡        =&gt;        客户端负载均衡：Netfix Ribbon</p>
+<p>​                                    服务端负载均衡：Feign(依赖于Ribbon，只是将调用方式RestTemplate更改为Service接口)</p>
+<p>分布式配置    =&gt;        SpringCloud Config</p>
+<h1 id="二、SpringCloud常见面试题"><a href="#二、SpringCloud常见面试题" class="headerlink" title="二、SpringCloud常见面试题"></a>二、SpringCloud常见面试题</h1><p>1、什么是微服？</p>
+<p>2、微服务之间是如何独立通讯的？</p>
+<p>3、SpringCloud和Dubbo有哪些区别？</p>
+<p>4、SpringBoot和SpringCIoud,请你谈谈对他们的理解</p>
+<p>5、什么是服务熔断？什么是服务降级</p>
+<p>6、微服务的优缺点是分别是什么？说下你在项目开发中遇到的坑</p>
+<p>7、你所知道的微服务技术栈有哪些？请列举一二</p>
+<p>8、eureka和zookeeper都可以提供服务注册与发现的功能，请说说两个的区别？</p>
 
                 
             </div>
@@ -513,7 +492,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Motherkillermaker.github.io/2021/12/07/dubbozookeeper-jie-shao/">http://Motherkillermaker.github.io/2021/12/07/dubbozookeeper-jie-shao/</a>
+                    <a href="http://Motherkillermaker.github.io/2021/12/25/springcloud/">http://Motherkillermaker.github.io/2021/12/25/springcloud/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -551,12 +530,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/SpringCloud/">
-                                    <span class="chip bg-color">SpringCloud</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
-                                    <span class="chip bg-color">分布式</span>
+                                <a href="/tags/Springcloud/">
+                                    <span class="chip bg-color">Springcloud</span>
                                 </a>
                             
                         </div>
@@ -864,9 +839,60 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/12/25/springcloud/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="SpringCloud">
+                        
+                        <span class="card-title">SpringCloud</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    技术
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Springcloud/">
+                        <span class="chip bg-color">Springcloud</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/12/25/wei-fu-wu-gai-shu/">
                     <div class="card-image">
@@ -884,9 +910,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -904,59 +930,6 @@
                     
                     <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
                         <span class="chip bg-color">微服务</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/12/04/fen-bu-shi-ru-men/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="分布式入门">
-                        
-                        <span class="card-title">分布式入门</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-04
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%8A%80%E6%9C%AF/" class="post-category">
-                                    技术
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/SpringCloud/">
-                        <span class="chip bg-color">SpringCloud</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
-                        <span class="chip bg-color">分布式</span>
                     </a>
                     
                 </div>
