@@ -434,7 +434,7 @@
 
 <p>思路：</p>
 <p>通过指针确定一个 小于区域（该区域内所有元素均小于num，初始下标为 -1）</p>
-<p>依次遍历数组，若当前遍历元素小于或等于num，则将<strong>当前遍历元素（下标为i）</strong>与 **小于区域的下一个位置元素(下标为 less + 1)**进行交换</p>
+<p>依次遍历数组，若当前遍历元素小于或等于num，则<strong>将当前遍历元素(下标为i)与小于区域的下一个位置元素(下标为 less + 1)进行交换</strong></p>
 <p>若当前遍历元素大于num则继续遍历</p>
 <p>边界情况考虑：</p>
 <p>若第一个元素需要交换则 自己和自己交换。符合题意</p>
@@ -464,9 +464,9 @@ public static void swap(int[] arr, int i, int j) {
 <pre class="line-numbers language-none"><code class="language-none">给定一个数组arr，和一个数num，请把小于等于num的数放在数组的左边，大于num的数放在数组的右边，等于num的数放中间<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>思路：</p>
-<p>通过头指针<strong>less</strong>确定一个 小于区域（该区域内所有元素均小于num，初始下标为 -1 ）</p>
+<p>通过头指针<strong>less</strong>确定一个 小于区域(该区域内所有元素均小于num，初始下标为 -1) </p>
 <p>通过尾指针<strong>more</strong>确定一个 大于区域（该区域内所有元素均大于num，初始下标为 arr.length ）</p>
-<p>依次遍历数组，若当前遍历元素小于或等于num，则将<strong>当前遍历元素（下标为i）</strong>与 <strong>小于区域的下一个位置元素(下标为 less + 1)<strong>进行交换；若当前遍历元素大于num，则将</strong>当前遍历元素（下标为i）</strong>与 **大于区域的下一个位置元素(下标为 more - 1)**进行交换；即头指针向后走，尾指针向前走，当遍历到尾指针时循环结束（所有元素均已比较）</p>
+<p>依次遍历数组，若当前遍历元素小于或等于num，则将<strong>当前遍历元素（下标为i）</strong>与 <strong>小于区域的下一个位置元素(下标为 less + 1)<strong>进行交换；若当前遍历元素大于num，则</strong>将当前遍历元素(下标为i)与大于区域的下一个位置元素(下标为 more - 1)进行交换</strong>；即头指针向后走，尾指针向前走，当遍历到尾指针时循环结束（所有元素均已比较）</p>
 <p>代码实现：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">public static void sortColors(int[] arr, int n) {
     // 小于区域指针
@@ -662,10 +662,11 @@ public static int[] partition(int[] arr, int low, int high) {
             low++;
         }
     }
-    // 循环结束，less指向中枢的前一个位置，more指向
+    // 循环结束，less指向中枢的前一个位置，more指向中枢的后一个位置
+    // 将最后位置的中枢与more交换，此时more即为中枢的最后一个位置
     swap(arr,more,high);
     return new int[]{less + 1, more};
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>改进的快速排序完整代码：</strong></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">public static void QuickSort(int[] arr) {
@@ -1348,7 +1349,7 @@ public static int[] partition(int[] arr, int low, int high) {
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">14.3k</span>&nbsp;字
+                class="white-color">14.4k</span>&nbsp;字
             
             
             
