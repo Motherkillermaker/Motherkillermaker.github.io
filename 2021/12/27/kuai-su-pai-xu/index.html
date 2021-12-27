@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="分布式">
+    <meta name="keywords" content="快速排序">
     <meta name="description" content="专注于Web,分享生活,分享知识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Dubbo + Zookeeper介绍 | LaughingCat</title>
+    <title>快速排序算法详解 | LaughingCat</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -227,12 +227,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Dubbo + Zookeeper介绍</h1>
+                    <h1 class="description center-align post-title">快速排序算法详解</h1>
                 </div>
             </div>
         </div>
@@ -348,12 +348,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/SpringCloud/">
-                                <span class="chip bg-color">SpringCloud</span>
+                            <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">排序算法</span>
                             </a>
                         
-                            <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
-                                <span class="chip bg-color">分布式</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
                             </a>
                         
                     </div>
@@ -364,8 +364,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%8A%80%E6%9C%AF/" class="post-category">
-                                技术
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
+                                数据结构与算法
                             </a>
                         
                     </div>
@@ -377,28 +377,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-12-07
+                    2021-12-27
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-12-07
+                    2021-12-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    3.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    14 分
                 </div>
                 
 
@@ -421,72 +421,313 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、Dubbo"><a href="#一、Dubbo" class="headerlink" title="一、Dubbo"></a>一、Dubbo</h1><h2 id="1-1-什么是Dubbo"><a href="#1-1-什么是Dubbo" class="headerlink" title="1.1 什么是Dubbo?"></a>1.1 <strong>什么是Dubbo?</strong></h2><p>Apache Dubbo 是一款高性能、轻量级的开源Java RPC框架。</p>
-<p>它提供了三大核心能力：</p>
-<p><strong>面向接口的远程方法调用</strong></p>
-<p><strong>智能容错和负载均衡</strong></p>
-<p><strong>服务自动注册和发现</strong></p>
-<p> <a target="_blank" rel="noopener" href="https://dubbo.apache.org/zh/">dubbo官网</a> </p>
-<p>随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应对，分布式服务架构以及流动计算架构势在必行，急需一个治理系统确保架构有条不紊的演进。</p>
-<p>在Dubbo的官网文档有这样一张图：</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/90d8839b7de5d414d00d8d18d4fc38fe.png" alt="传统网站架构向分布式架构过渡"></p>
-<p><strong>该图显示了传统应用网站架构是如何向分布式架构过渡的</strong></p>
-<img src="/2021/12/07/dubbozookeeper-jie-shao/1.png" class="" title="单一应用结构">
+                <h1 id="快速排序算法详解"><a href="#快速排序算法详解" class="headerlink" title="快速排序算法详解"></a>快速排序算法详解</h1><h2 id="一、什么是快速排序算法"><a href="#一、什么是快速排序算法" class="headerlink" title="一、什么是快速排序算法"></a>一、什么是快速排序算法</h2><p>快速排序是对<a target="_blank" rel="noopener" href="http://data.biancheng.net/view/70.html">冒泡排序</a>的一种改进，由 C.A.R.Hoare（Charles Antony Richard Hoare，东尼·霍尔）在 1962 年提出。</p>
+<p><strong>快速排序基本思想</strong>：</p>
+<p>通过一趟排序将要排序的数据分割成独立的两部分，<strong>其中一部分的所有数据比另一部分的所有数据要小</strong>，再按这种方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，使整个数据变成有序序列。</p>
+<p><strong>快速排序原理：</strong></p>
+<p>排序算法的思想非常简单，在待排序的数列中，我们首先要找一个数字作为<strong>基准数</strong>（这只是个专用名词）。</p>
+<p><strong>注意：这里的基准数为每一趟比较的中枢，该数的选取将决定快排算法的速度快慢</strong></p>
+<p>为了方便，我们一般选择第 1 个数字作为基准数（其实选择第几个并没有关系）。接下来我们需要把这个待排序的数列中小于基准数的元素移动到待排序的数列的左边，把大于基准数的元素移动到待排序的数列的右边。这时，左右两个分区的元素就相对有序了；接着把两个分区的元素分别按照上面两种方法继续对每个分区找出基准数，然后移动，直到各个分区只有一个数时为止。</p>
+<p><strong>这是典型的分治思想，即分治法。</strong></p>
+<h1 id="二、快速排序的实现"><a href="#二、快速排序的实现" class="headerlink" title="二、快速排序的实现"></a>二、快速排序的实现</h1><h2 id="1-单指针"><a href="#1-单指针" class="headerlink" title="1.单指针"></a>1.<strong>单指针</strong></h2><p>问题引入：</p>
+<pre class="line-numbers language-none"><code class="language-none">给定一个数组arr，和一个数num，请把小于等于num的数放在数组的左边，大于num的数放在数组的右边。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<img src="/2021/12/07/dubbozookeeper-jie-shao/2.png" class="" title="垂直应用架构">
+<p>思路：</p>
+<p>通过指针确定一个 小于区域（该区域内所有元素均小于num，初始下标为 -1）</p>
+<p>依次遍历数组，若当前遍历元素小于或等于num，则将<strong>当前遍历元素（下标为i）</strong>与 **小于区域的下一个位置元素(下标为 less + 1)**进行交换</p>
+<p>若当前遍历元素大于num则继续遍历</p>
+<p>边界情况考虑：</p>
+<p>若第一个元素需要交换则 自己和自己交换。符合题意</p>
+<p>代码实现：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public static void arrange(int[] arr, int num) {
+    // 初始 x 区域的下标 =&gt; 指针
+    int less = -1;
+    for (int i = 0; i &lt; arr.length; i++) {
+        if (arr[i] &lt;= num) {
+            // 前++是先自加再使用, 而后++是先使用再自加
+            // x 先 + 1， 然后与 i 位置上的值交换 =&gt;  i 与 x 的下一个位置进行交换
+            swap(arr, i, ++less);
+        }
+    }
+}
 
-<img src="/2021/12/07/dubbozookeeper-jie-shao/3.png" class="" title="分布式架构">
+public static void swap(int[] arr, int i, int j) {
+        if (i == j) {
+            return;
+        }
+        arr[i] = arr[i] ^ arr[j];
+        arr[j] = arr[i] ^ arr[j];
+        arr[i] = arr[i] ^ arr[j];
+    }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/2021/12/07/dubbozookeeper-jie-shao/4.png" class="" title="流动计算架构">
+<h2 id="2-双指针"><a href="#2-双指针" class="headerlink" title="2.双指针"></a>2.<strong>双指针</strong></h2><p>问题引入：</p>
+<pre class="line-numbers language-none"><code class="language-none">给定一个数组arr，和一个数num，请把小于等于num的数放在数组的左边，大于num的数放在数组的右边，等于num的数放中间<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>思路：</p>
+<p>通过头指针<strong>less</strong>确定一个 小于区域（该区域内所有元素均小于num，初始下标为 -1 ）</p>
+<p>通过尾指针<strong>more</strong>确定一个 大于区域（该区域内所有元素均大于num，初始下标为 arr.length ）</p>
+<p>依次遍历数组，若当前遍历元素小于或等于num，则将<strong>当前遍历元素（下标为i）</strong>与 <strong>小于区域的下一个位置元素(下标为 less + 1)<strong>进行交换；若当前遍历元素大于num，则将</strong>当前遍历元素（下标为i）</strong>与 **大于区域的下一个位置元素(下标为 more - 1)**进行交换；即头指针向后走，尾指针向前走，当遍历到尾指针时循环结束（所有元素均已比较）</p>
+<p>代码实现：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public static void sortColors(int[] arr, int n) {
+    // 小于区域指针
+    int less = -1;
+    // 大于区域指针
+    int more = arr.length;
+    // 数组指针
+    int i = 0;
+    // 指针遇到大于区域的前一个位置 =&gt; 停止循环
+    while (i &lt; more) {
+        // 当前数字大于给定数字，当前数字与大于区域的下一个交换
+        if (arr[i] &gt; n) {
+            swap(arr, i, --more);
+        }else if (arr[i] &lt; n) {
+            // 当前数字小于给定数字，当前数字与小于区域的下一个交换
+            swap(arr, i, ++less);
+        }else {
+            // 当前数字等于给定数字，指针向后移动
+            i++;
+        }
+    }
+}
 
+public static void swap(int[] arr, int i, int j) {
+        if (i == j) {
+            return;
+        }
+        arr[i] = arr[i] ^ arr[j];
+        arr[j] = arr[i] ^ arr[j];
+        arr[i] = arr[i] ^ arr[j];
+    }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="1-2-Dubbo-架构"><a href="#1-2-Dubbo-架构" class="headerlink" title="1.2 Dubbo 架构"></a>1.2 Dubbo 架构</h2><img src="/2021/12/07/dubbozookeeper-jie-shao/5.png" class="" title="Dubbo架构图">
+<h2 id="3-快速排序算法实现"><a href="#3-快速排序算法实现" class="headerlink" title="3.快速排序算法实现"></a>3.<strong>快速排序算法实现</strong></h2><p>理解了单指针和双指针，接下来让我们使用分治的思想，利用递归来解决快速排序问题</p>
+<p>在双指针问题上，我们已经可以做到让一个数的左右有序（<strong>左边的值均小于右边的值</strong>）</p>
+<p>那么如果继续在该数的左右两边再次使用该方法，我们便又可以确定两个数，使得这两个数的左右有序</p>
+<p>以此类推，继续下去，我们便可以让更多的数有序，这便是利用递归实现快速排序的基本思想</p>
+<p>让我们先来实现主方法：</p>
+<p>传入一个数组，若该数组为空或少于两个元素则直接返回；</p>
+<p>否则开始使用快速排序算法进行排序 (传入初始元素下标0 和 末尾元素下标)</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public static void QuickSort(int[] arr) {
+    if (arr == null || arr.length &lt; 2) {
+        return;
+    }
+    qicksortV1(arr, 0, arr.length - 1);
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>接着让我们来实现快速排序算法：</p>
+<p>接收到主方法传入的参数后，首先利用partition方法确定中间的位置，即先让一个数的左右两边有序并返回此时中枢的下标；</p>
+<p>接着让左边有序；</p>
+<p>最后让右边有序；</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public static void qicksortV1(int[] arr, int L, int R) {
+    // 双指针基础上 左右递归进行
+    if (L &lt; R) {
+        // 局部确定中枢
+        int pivotloc = partition(arr,L,R);
+        // 局部左边有序
+        qicksortV1(arr,L,pivotloc - 1);
+        // 局部右边有序
+        qicksortV1(arr,pivotloc + 1, R);
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>我们可以看到算法十分的简洁，但问题是如何寻找到当前传入数组的中枢位置并返回？让我们来看看partition方法的实现</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">/**
+ * 快速排序确定中枢位置
+ * @param: arr 传入的数组
+ * @param: low 要确定中枢区域的头指针
+ * @param: high 要确定中枢区域的尾指针
+ * @return: 中枢位置
+ */
+public static int partition(int[] arr, int low, int high) {
+    // 以最左侧为基准放在中间 (该数的选择会影响快速排序的效率)
+    int pivot = arr[low];
+    while (low &lt; high) {
+        // 尾指针的值大于中枢，尾指针 --
+        while (low &lt; high &amp;&amp; arr[high] &gt;= pivot) {
+            high--;
+        }
+        // 循环停止，当前尾指针所指元素小于中枢元素 =&gt; 搬到前面
+        arr[low] = arr[high];
+        // 头指针的值小于中枢，头指针 ++
+        while (low &lt; high &amp;&amp; arr[low] &lt;= pivot) {
+            low++;
+        }
+        // 循环停止，当前头指针所指元素大于中枢元素 =&gt; 搬到后面
+        arr[high] = arr[low];
+    }
+    // 循环结束 此时 low 和 high 相等 =&gt; 该位置用于放置中枢位置
+    arr[low] = pivot;
+    // 返回中枢位置
+    return low;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><strong>服务提供者(Provider)：</strong>暴露服务的服务提供方，服务提供者在启动时，向注册中心注册自己提供的服务。</p>
-<p><strong>服务消费者(Consumer)：</strong>调用远程服务的服务消费方，服务消费者在启动时，向注册中心订阅自己所需的服务，服务消<br>费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。</p>
-<p><strong>注册中心（Registry)：</strong>注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。</p>
-<p><strong>监控中心(Monitor)：</strong>服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</p>
-<h2 id="1-3-调用关系说明"><a href="#1-3-调用关系说明" class="headerlink" title="1.3 调用关系说明"></a>1.3 调用关系说明</h2><p><strong>调用关系说明</strong></p>
-<p>| 服务容器负启动，加载，运行服务提供者。</p>
-<p>| 服务提供者在启动时，向注册中心注册自己提供的服务。</p>
-<p>| 服务消费者在启动时，向注册中心订阅自己所需的服务。</p>
-<p>| 注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。</p>
-<p>| 服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。</p>
-<p>| 服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</p>
-<h2 id="1-4-Dubbo说明"><a href="#1-4-Dubbo说明" class="headerlink" title="1.4 Dubbo说明"></a>1.4 Dubbo说明</h2><p>dobbo本身并不是一个软件。</p>
-<p>它其实就是一个jar包，能够帮你的java程序连接到zookeeper注册中心，并利用zookeeper消费以及提供服务</p>
-<p>但是为了让用户更好的管理和监控众多的dubbo服务，dubbo官方提供了一个可视化的监控程序—dubbo admin，不过这个监控程序不按照也不会影响dubbo的使用。</p>
-<h1 id="二、Zookeeper"><a href="#二、Zookeeper" class="headerlink" title="二、Zookeeper"></a>二、Zookeeper</h1><h2 id="2-1-什么是zookeeper"><a href="#2-1-什么是zookeeper" class="headerlink" title="2.1 什么是zookeeper?"></a>2.1 什么是zookeeper?</h2><p>​        官方文档上这么解释zookeeper，它是一个分布式服务框架，是Apache Hadoop 的一个子项目，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，如：<strong>统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理</strong>等。</p>
-<p>上面的解释有点抽象，简单来说  <strong>zookeeper=文件系统+监听通知机制</strong>。</p>
-<h2 id="2-2-zookeeper的功能"><a href="#2-2-zookeeper的功能" class="headerlink" title="2.2 zookeeper的功能"></a>2.2 zookeeper的功能</h2><p><strong>1、文件系统</strong></p>
-<p>Zookeeper维护一个类似文件系统的数据结构：</p>
-<p><img src="https://img-blog.csdn.net/201807121434154?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2phdmFfNjY2NjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
-<p>每个子目录项如 NameService 都被称作为 znode(目录节点)，和文件系统一样，我们能够自由的增加、删除znode，在一个znode下增加、删除子znode，唯一的不同在于znode是可以存储数据的。</p>
-<p>有四种类型的znode：</p>
-<ul>
-<li><p><strong>PERSISTENT-持久化目录节点</strong></p>
-<p>客户端与zookeeper断开连接后，该节点依旧存在</p>
-</li>
-<li><p><strong>PERSISTENT_SEQUENTIAL-持久化顺序编号目录节点</strong></p>
-<p>客户端与zookeeper断开连接后，该节点依旧存在，只是Zookeeper给该节点名称进行顺序编号</p>
-</li>
-<li><p><strong>EPHEMERAL-临时目录节点</strong></p>
-<p>客户端与zookeeper断开连接后，该节点被删除</p>
-</li>
-<li><p><strong>EPHEMERAL_SEQUENTIAL-临时顺序编号目录节点</strong></p>
-<p>客户端与zookeeper断开连接后，该节点被删除，只是Zookeeper给该节点名称进行顺序编号</p>
-</li>
-</ul>
-<p><strong>2、监听通知机制</strong></p>
-<p>客户端注册监听它关心的目录节点，当目录节点发生变化（数据改变、被删除、子目录节点增加删除）时，zookeeper会通知客户端。</p>
-<h2 id="2-3-分布式应用配置管理举例"><a href="#2-3-分布式应用配置管理举例" class="headerlink" title="2.3 分布式应用配置管理举例"></a>2.3 分布式应用配置管理举例</h2><p>假设我们的程序是分布式部署在多台机器上，如果我们要改变程序的配置文件，需要逐台机器去修改，非常麻烦，现在把这些配置全部放到zookeeper上去，保存在 zookeeper 的某个目录节点中，然后所有相关应用程序对这个目录节点进行监听，一旦配置信息发生变化，每个应用程序就会收到 zookeeper 的通知，然后从 zookeeper 获取新的配置信息应用到系统中。</p>
-<p><img src="https://img-blog.csdn.net/20180712143454552?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2phdmFfNjY2NjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="分布式应用举例"></p>
-<p>参考文献：</p>
-<p>1、<a target="_blank" rel="noopener" href="https://blog.csdn.net/java_66666/article/details/81015302?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163886867716780271586538%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=163886867716780271586538&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-81015302.first_rank_v2_pc_rank_v29&amp;utm_term=zookeeper&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/java_66666/article/details/81015302?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163886867716780271586538%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=163886867716780271586538&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-81015302.first_rank_v2_pc_rank_v29&amp;utm_term=zookeeper&amp;spm=1018.2226.3001.4187</a></p>
-<p>2、<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41819988/article/details/109606328?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=%E7%8B%82%E7%A5%9E%E8%AF%B4zookeep%20%E7%AC%94%E8%AE%B0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-109606328.first_rank_v2_pc_rank_v29&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/qq_41819988/article/details/109606328?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=%E7%8B%82%E7%A5%9E%E8%AF%B4zookeep%20%E7%AC%94%E8%AE%B0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-109606328.first_rank_v2_pc_rank_v29&amp;spm=1018.2226.3001.4187</a></p>
+<p>可以看到该方法与双指针例题极为相似，双指针需要交换，而该方法则是需要返回中枢的位置。</p>
+<p>完整的快速排序代码：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public static void QuickSort(int[] arr) {
+    if (arr == null || arr.length &lt; 2) {
+        return;
+    }
+    qicksortV1(arr, 0, arr.length - 1);
+}
+
+public static void qicksortV1(int[] arr, int L, int R) {
+    // 双指针基础上 左右递归进行
+    if (L &lt; R) {
+        // 局部确定中枢
+        int pivotloc = partition(arr,L,R);
+        // 局部左边有序
+        qicksortV1(arr,L,pivotloc - 1);
+        // 局部右边有序
+        qicksortV1(arr,pivotloc + 1, R);
+    }
+}
+
+/**
+ * 快速排序确定中枢位置
+ * @param arr 传入的数组
+ * @param low 要确定中枢区域的头指针
+ * @param high 要确定中枢区域的尾指针
+ * @return 中枢位置
+ */
+public static int partition(int[] arr, int low, int high) {
+    // 以最左侧为基准放在中间
+    int pivot = arr[low];
+    while (low &lt; high) {
+        // 尾指针的值大于中枢，尾指针 --
+        while (low &lt; high &amp;&amp; arr[high] &gt;= pivot) {
+            high--;
+        }
+        // 循环停止，当前尾指针所指元素小于中枢元素 =&gt; 搬到前面
+        arr[low] = arr[high];
+        // 头指针的值小于中枢，头指针 ++
+        while (low &lt; high &amp;&amp; arr[low] &lt;= pivot) {
+            low++;
+        }
+        // 循环停止，当前头指针所指元素大于中枢元素 =&gt; 搬到后面
+        arr[high] = arr[low];
+    }
+    // 循环结束 此时 low 和 high 相等 =&gt; 该位置用于放置中枢位置
+    arr[low] = pivot;
+    return low;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="代码分析："><a href="#代码分析：" class="headerlink" title="代码分析："></a>代码分析：</h2><p><strong>经典快排：</strong></p>
+<p>从上述代码我们可以看到一次只搞定一个数，每次将初始的左侧数作为基准放在中间，&lt;基准数的放左边，&gt;=基准数的放右边；<strong>这样会导致右边会包含等于基准值的若干个数</strong>。接着返回基准值的左边部分和右边部分，再对左右部分进行上述操作，最终对数组完成排序。经典快排可能导致子区域划分极不平均。<br>当数据为{1,2,3, 4,5,6,7}时，每次将第一个数作为基准，所需时间复杂度：O（N*N）</p>
+<p>那如何挑选基准，使得挑选中枢的时间缩短呢？</p>
+<p><strong>改进后的经典快排：</strong></p>
+<p>改进后的快排一次搞定一部分数（=pivot的那部分），总体来说，经典快排每次递归调用只有一个数不动，其他的需要进行二次甚至多次递归；而<strong>改进后的则是=pivot的一部分数全都不动</strong>，<strong>只需递归 &lt;x 或者 &gt;x的数即可。</strong><br>为了避免经典快排可能导致子区域划分极不平均，改进后的快排则是随机抽取数组中的一个数作为基准值对数组进行排序。</p>
+<p>其时间和空间复杂度依次为：</p>
+<p>时间复杂度O(N*logN)，空间复杂度O(logN);</p>
+<p><strong>递归过程（改进的快速排序）</strong></p>
+<p>中枢位置为一个数组，即中枢开始的位置和中枢结束的位置</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public static void qicksortV2(int[] arr, int L, int R) {
+    // 双指针基础上 左右递归进行
+    if (L &lt; R) {
+        //先随机取出一个数放到最后(取出下标)
+        int randloc = (int) (Math.random() * (R - L + 1));
+        swap(arr, L + randloc, R);
+        // 局部确定中枢 （0位置为第一个中枢位置，1位置为最后一个中枢位置）
+        int[] pivotloc = partition(arr, L, R);
+        // 局部左边有序
+        qicksortV2(arr, L, pivotloc[0] - 1);
+        // 局部右边有序
+        qicksortV2(arr, pivotloc[1] + 1, R);
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>partition 过程</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">/**
+ * 快速排序确定中枢位置 （中枢开始的位置和结束的位置） =&gt; 双指针经典用法
+ *
+ * @param arr
+ * @param low
+ * @param high
+ * @return
+ */
+public static int[] partition(int[] arr, int low, int high) {
+    // 小于区域指针
+    int less = low - 1;
+    // 大于区域指针
+    int more = high;
+    // low为数组指针
+    while (low &lt; more) {
+        // 当前数字大于给定数字，当前数字与大于区域的下一个交换
+        if (arr[low] &gt; arr[high]) {
+            // 前++是先自加再使用, 而后++是先使用再自加
+            swap(arr, low,--more);
+        } else if (arr[low] &lt; arr[high]) {
+            // 当前数字小于给定数字，当前数字与小于区域的下一个交换，指针向前移动
+            swap(arr, low++, ++less);
+        } else {
+            // 当前数字等于给定数字，指针向后移动
+            low++;
+        }
+    }
+    // 循环结束，less指向中枢的前一个位置，more指向
+    swap(arr,more,high);
+    return new int[]{less + 1, more};
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>改进的快速排序完整代码：</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public static void QuickSort(int[] arr) {
+    if (arr == null || arr.length &lt; 2) {
+        return;
+    }
+    qicksortV2(arr, 0, arr.length - 1);
+}
+
+public static void qicksortV2(int[] arr, int L, int R) {
+    // 双指针基础上 左右递归进行
+    if (L &lt; R) {
+        //先随机取出一个数放到最后(取出下标)
+        int randloc = (int) (Math.random() * (R - L + 1));
+        swap(arr, L + randloc, R);
+        // 局部确定中枢 （0位置为第一个中枢位置，1位置为最后一个中枢位置）
+        int[] pivotloc = partition(arr, L, R);
+        // 局部左边有序
+        qicksortV2(arr, L, pivotloc[0] - 1);
+        // 局部右边有序
+        qicksortV2(arr, pivotloc[1] + 1, R);
+    }
+}
+
+/**
+ * 快速排序确定中枢位置 （中枢开始的位置和结束的位置） =&gt; 双指针经典用法
+ *
+ * @param arr
+ * @param low
+ * @param high
+ * @return
+ */
+public static int[] partition(int[] arr, int low, int high) {
+    // 小于区域指针
+    int less = low - 1;
+    // 大于区域指针
+    int more = high;
+    // low为数组指针
+    while (low &lt; more) {
+        // 当前数字大于给定数字，当前数字与大于区域的下一个交换
+        if (arr[low] &gt; arr[high]) {
+            // 前++是先自加再使用, 而后++是先使用再自加
+            swap(arr, low,--more);
+        } else if (arr[low] &lt; arr[high]) {
+            // 当前数字小于给定数字，当前数字与小于区域的下一个交换，指针向前移动
+            swap(arr, low++, ++less);
+        } else {
+            // 当前数字等于给定数字，指针向后移动
+            low++;
+        }
+    }
+    // 循环结束，less指向中枢的前一个位置，more指向中枢的后一个位置
+    // 将最后位置的中枢与more交换，此时more即为中枢的最后一个位置
+    swap(arr,more,high);
+    return new int[]{less + 1, more};
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="三、快速排序的特点及性能"><a href="#三、快速排序的特点及性能" class="headerlink" title="三、快速排序的特点及性能"></a>三、快速排序的特点及性能</h1><p>快速排序是在冒泡排序的基础上改进而来的，冒泡排序每次只能交换相邻的两个元素，而快速排序是跳跃式的交换，交换的距离很大，因此总的比较和交换次数少了很多，速度也快了不少。</p>
+<p>但是快速排序在最坏情况下的<a target="_blank" rel="noopener" href="http://data.biancheng.net/view/2.html">时间复杂度</a>和冒泡排序一样，是 <code>O(n2)</code>，实际上每次比较都需要交换，但是这种情况并不常见。我们可以思考一下如果每次比较都需要交换，那么数列的平均时间复杂度是 <code>O(nlogn)</code>，事实上在大多数时候，排序的速度要快于这个平均时间复杂度。这种算法实际上是一种分治法思想，也就是分而治之，把问题分为一个个的小部分来分别解决，再把结果组合起来。</p>
+<p>快速排序只是使用数组原本的空间进行排序，所以所占用的空间应该是常量级的，但是由于每次划分之后是递归调用，所以递归调用在运行的过程中会消耗一定的空间，在一般情况下的<a target="_blank" rel="noopener" href="http://data.biancheng.net/view/2.html">空间复杂度</a>为 <code>O(logn)</code>，在最差的情况下，若每次只完成了一个元素，那么空间复杂度为 <code>O(n)</code>。所以我们一般认为快速排序的空间复杂度为 <code>O(logn)</code>。</p>
+<p>快速排序是一个不稳定的算法，在经过排序之后，可能会对相同值的元素的相对位置造成改变。</p>
+<p>快速排序基本上被认为是相同数量级的所有排序算法中，平均性能最好的。</p>
 
                 
             </div>
@@ -513,7 +754,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Motherkillermaker.github.io/2021/12/07/dubbozookeeper-jie-shao/">http://Motherkillermaker.github.io/2021/12/07/dubbozookeeper-jie-shao/</a>
+                    <a href="http://Motherkillermaker.github.io/2021/12/27/kuai-su-pai-xu/">http://Motherkillermaker.github.io/2021/12/27/kuai-su-pai-xu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -551,12 +792,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/SpringCloud/">
-                                    <span class="chip bg-color">SpringCloud</span>
+                                <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">排序算法</span>
                                 </a>
                             
-                                <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
-                                    <span class="chip bg-color">分布式</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
                                 </a>
                             
                         </div>
@@ -864,17 +1105,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/12/25/wei-fu-wu-gai-shu/">
+                <a href="/2021/12/27/kuai-su-pai-xu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="微服务概述">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="快速排序算法详解">
                         
-                        <span class="card-title">微服务概述</span>
+                        <span class="card-title">快速排序算法详解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -884,26 +1126,31 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%8A%80%E6%9C%AF/" class="post-category">
-                                    技术
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
+                                    数据结构与算法
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
-                        <span class="chip bg-color">微服务</span>
+                    <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">排序算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
                     </a>
                     
                 </div>
@@ -917,13 +1164,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/12/04/fen-bu-shi-ru-men/">
+                <a href="/2021/12/25/springcloud/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="分布式入门">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="SpringCloud">
                         
-                        <span class="card-title">分布式入门</span>
+                        <span class="card-title">SpringCloud</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -934,7 +1181,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-25
                             </span>
                         <span class="publish-author">
                             
@@ -951,12 +1198,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/SpringCloud/">
-                        <span class="chip bg-color">SpringCloud</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
-                        <span class="chip bg-color">分布式</span>
+                    <a href="/tags/Springcloud/">
+                        <span class="chip bg-color">Springcloud</span>
                     </a>
                     
                 </div>
